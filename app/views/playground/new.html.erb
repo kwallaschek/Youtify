@@ -3,7 +3,7 @@
 
 
 // Fetch video info (using a proxy to avoid CORS errors)
-fetch('https://cors-anywhere.herokuapp.com/' + "https://www.youtube.com/get_video_info?video_id=" + "CMNry4PE93Y").then(response => {
+fetch('https://cors-anywhere.herokuapp.com/' + "https://www.youtube.com/get_video_info?video_id=" + "<%=@video.id %>").then(response => {
 if (response.ok) {
 response.text().then(ytData => {
 
