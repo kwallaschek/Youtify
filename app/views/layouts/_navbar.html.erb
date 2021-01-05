@@ -8,7 +8,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <%= link_to 'Home', '/tbd', class: "nav-link" %>
+        <%= link_to 'Home', root_path, class: "nav-link" %>
       </li>
     </ul>
     <% if !logged_in? %>
@@ -26,6 +26,9 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
       <ul class="navbar-nav ml-0">
+        <li class="nav-item margin-left=0">
+          <%= link_to 'Profile', user_path(session[:user_id]), class: "nav-link"%>
+        </li>
         <li class="nav-item margin-left=0">
           <%= link_to 'Logout', logout_path, class: "nav-link" , method: :delete %>
         </li>
