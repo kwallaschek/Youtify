@@ -31,3 +31,21 @@
 
 en:
   hello: "Hello world"
+  uname: "Username"
+  password: "Password"
+  email: "Email"
+  home: "Home"
+  login: "Login"
+  sign up: "Sign Up"
+  search: "Search"
+  profile: "Profile"
+  logout: "Logout"
+  update account: "Update account"
+  choose a password: "Choose a password"
+  enter password: "Enter your password"
+  enter mail: "Enter your email address"
+  enter uname: "Enter a username"
+  t_now: "The time is now: "
+  time:
+    formats:
+      long: "%Y/%d/%m　%H:%M:%S"

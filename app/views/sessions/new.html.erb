@@ -1,4 +1,4 @@
-<h1 class="text-center mt-4">Log in</h1>
+<h1 class="text-center mt-4"><%= t('login') %></h1>
 
 <div class="container">
   <div class="row justify-content-center">
@@ -7,19 +7,19 @@
         <div class="form-group row">
           <%= f.label :email, class: "col-2 col-form-label text-light" %>
           <div class="col-10">
-            <%= f.email_field :email, class: "form-control shadow rounded", placeholder: "Enter your email address" %>
+            <%= f.email_field :email, class: "form-control shadow rounded", placeholder: t('enter mail') %>
           </div>
         </div>
 
         <div class="form-group row">
           <%= f.label :password, class: "col-2 col-form-label text-light" %>
           <div class="col-10">
-            <%= f.password_field :password, class: "form-control shadow rounded", placeholder: "Enter your password" %>
+            <%= f.password_field :password, class: "form-control shadow rounded", placeholder: t('enter password') %>
           </div>
         </div>
 
         <div class="form-group row justify-content-center">
-          <%= f.submit "Log in", class: "btn btn-outline-light btn-lg" %>
+          <%= f.submit t('login'), class: "btn btn-outline-light btn-lg" %>
         </div>
       <% end %>
     </div>

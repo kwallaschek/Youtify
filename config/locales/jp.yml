@@ -1,3 +1,20 @@
 jp:
-  hello: 'ヤッホー世界'
-  
+  hello: 'ハローワールド'
+  uname: 'ユーザー名'
+  password: "パスワード"
+  email: "メールアドレス"
+  home: "ホーム"
+  login: "ログイン"
+  sign up: "サインアップ"
+  search: "検索"
+  profile: "プロファイル"
+  logout: "ログアウト"
+  update account: "アカウント情報を更新"
+  choose a password: "パスワードを入力"
+  enter password: "パスワードを入力"
+  enter mail: "メールアドレスを入力"
+  enter uname: "ユーザー名を入力"
+  t_now: "今は："
+  time:
+    formats:
+      long: "%Y年%m月%d日　%H時%M分%S秒"

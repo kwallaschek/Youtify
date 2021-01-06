@@ -1,1 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
+#page-content {
+  background-color: lightgrey;
+  min-height: 100vh;
+}
+#sidebar {
+  background-color: darkgrey;
+  min-height: 100vh;
+}

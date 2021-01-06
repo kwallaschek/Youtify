@@ -1,2 +1,20 @@
 de:
   hello: "Hallo Welt"
+  uname: 'Nutzername'
+  password: "Passwort"
+  email: 'E-Mail Adresse'
+  home: "Home"
+  login: "Anmelden"
+  sign up: "Registrieren"
+  search: "Suche"
+  profile: "Profil"
+  logout: "Abmelden"
+  update account: "Account aktualisieren"
+  choose a password: "Wählen sie ein Passwort"
+  enter mail: "Geben Sie ihre E-Mail Adresse ein"
+  enter uname: "Wählen Sie einen Nutzernamen"
+  enter password: "Geben Sie ihr Passwort ein"
+  t_now: "Die aktuelle Zeit: "
+  time:
+    formats:
+      long: "%d.%m.%Y,　%H:%M:%S"
