@@ -1,5 +1,6 @@
 class User < ApplicationRecord
 
+  has_many :playlists, dependent: :destroy
   before_save { self.email = email.downcase }
 
   validates :username, presence: true,
