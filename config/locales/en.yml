@@ -50,10 +50,15 @@ en:
   delete profile: 'Profil löschen'
   u sure: "Are you sure?"
   t_now: "The time is now: "
-  pl deleted: ''
-  helpers:
-    placeholder:
-      search: "fadsfa"
+  alert require user: "You must be logged in to perform that action"
+  save error: "The following errors prevented the {{obj}} from being saved"
+  logged in success: "Logged in successfully"
+  logged in error: "There was something wrong with your login details"
+  logged out: "Logged out"
+  user update success: "Your account information was successfully updated"
+  welcome sign up: "Welcome, you have successfully signed up"
+  acc delete success: "Account successfully deleted"
+  pl deleted: 'Playlist deleted successfully'
   time:
     formats:
       long: "%Y/%d/%m　%H:%M:%S"

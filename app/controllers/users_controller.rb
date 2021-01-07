@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "Your account information was successfully updated"
+      flash[:notice] = t('user update success')
       redirect_to @user
     else
       render 'edit'
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice] = "Welcome, you have successfully signed up"
+      flash[:notice] = t('welcome sign up')
       redirect_to root_path
     else
       render 'new'
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     session[:user_id] = nil
-    flash[:notice] = "Account successfully deleted"
+    flash[:notice] = t('acc delete success')
     redirect_to '/tbd'
   end
 

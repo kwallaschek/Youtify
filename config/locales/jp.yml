@@ -19,8 +19,15 @@ jp:
   delete profile: 'プロファイルを削除'
   u sure: "それは確かですか?"
   t_now: "今は："
-  pl deleted: ''
-
+  alert require user: "このアクションを実行するにはログインする必要があります"
+  save error: "以下のエラーにより、{{obj}}が保存されませんでした"
+  logged in success: "正常にログインしました"
+  logged in error: "ログイン情報に何か問題がありました"
+  logged out: "ログアウトしました"
+  user update success: "アカウント情報が正常に更新されました"
+  welcome sign up: "いらっしゃいませ、サインアップに成功しました"
+  acc delete success: "アカウントの削除に成功しました"
+  pl deleted: 'プレイリストの削除しました'
   time:
     formats:
       long: "%Y年%m月%d日　%H時%M分%S秒"
