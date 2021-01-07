@@ -45,7 +45,15 @@ en:
   enter password: "Enter your password"
   enter mail: "Enter your email address"
   enter uname: "Enter a username"
+  edit profile: 'Profil bearbeiten'
+  connect yt: 'Mit YouTube verbinden'
+  delete profile: 'Profil löschen'
+  u sure: "Are you sure?"
   t_now: "The time is now: "
+  pl deleted: ''
+  helpers:
+    placeholder:
+      search: "fadsfa"
   time:
     formats:
       long: "%Y/%d/%m　%H:%M:%S"

@@ -1,0 +1,15 @@
+<div>
+  <ul class="list-group col-xs-12">
+    <% if @current_playlist.songs.size > 0 %>
+      <% @current_playlist.songs.each do |sg| %>
+        <li class="list-group-item">
+          <button class="mr-5">Play</button><%= sg.name %>
+        </li>
+      <% end %>
+    <% else %>
+      <div>No Songs yet</div>
+    <% end %>
+  </ul>
+
+</div>
+

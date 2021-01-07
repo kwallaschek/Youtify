@@ -14,7 +14,13 @@ jp:
   enter password: "パスワードを入力"
   enter mail: "メールアドレスを入力"
   enter uname: "ユーザー名を入力"
+  edit profile: 'プロファイル編集'
+  connect yt: 'YouTubeとつながる'
+  delete profile: 'プロファイルを削除'
+  u sure: "それは確かですか?"
   t_now: "今は："
+  pl deleted: ''
+
   time:
     formats:
       long: "%Y年%m月%d日　%H時%M分%S秒"

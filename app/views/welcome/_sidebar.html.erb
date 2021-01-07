@@ -1,0 +1,12 @@
+<div >
+
+  <ul class="mt-4">
+    <div id="ml-0">Playlists</div>
+    <%@playlists.each do |pl| %>
+      <div id="litem" class="justify-content-center">
+        <%= link_to pl.name, welcome_set_current_playlist_path(:id => pl.id), method: :post  %>
+      </div>
+    <% end %>
+  </ul>
+
+</div>

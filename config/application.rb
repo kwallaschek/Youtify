@@ -16,5 +16,10 @@ module Youtify
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    config.assets.precompile += %w( '.svg' )
+
+    # Must include to get inline SVGs to work in deploy
+    config.assets.css_compressor = :sass
   end
 end

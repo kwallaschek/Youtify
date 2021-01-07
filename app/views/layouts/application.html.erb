@@ -12,9 +12,10 @@
 
   <body>
     <%= render 'layouts/navbar' %>
+    <% if logged_in? %>
     <div class="row">
     <div id="sidebar" class="col-2">
-    <%= render 'layouts/sidebar' %>
+    <%= render '/welcome/sidebar' %>
     </div>
     <div class="col-10" id="page-content">
       <%= render 'layouts/messages' %>
@@ -22,5 +23,9 @@
     </div>
     </div>
     <%= render 'layouts/footer' %>
+    <% else %>
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

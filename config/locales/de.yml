@@ -14,7 +14,13 @@ de:
   enter mail: "Geben Sie ihre E-Mail Adresse ein"
   enter uname: "Wählen Sie einen Nutzernamen"
   enter password: "Geben Sie ihr Passwort ein"
+  edit profile: 'Profil bearbeiten'
+  connect yt: 'Mit YouTube verbinden'
+  delete profile: 'Profil löschen'
+  u sure: "Sind sie sicher?"
   t_now: "Die aktuelle Zeit: "
+  pl deleted: ''
+
   time:
     formats:
       long: "%d.%m.%Y,　%H:%M:%S"

@@ -1,11 +1,11 @@
 <p>
 <div class="text-center mt-4">
-  <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-outline-info" %>
+  <%= link_to t('edit profile'), edit_user_path(@user), class: "btn btn-outline-info" %>
 </div>
 <div class="text-center mt-4">
-  <%= link_to "Connect Youtube", "#", class: "btn btn-outline-info" %>
+  <%= link_to t('connect yt'), "#", class: "btn btn-outline-info" %>
 </div>
 <div class="text-center mt-4">
-  <%= link_to "Delete profile", user_path(current_user), class: "btn btn-outline-danger", method: :delete, data: { confirm: "Are you sure?" } %>
+  <%= link_to t('delete profile'), user_path(current_user), class: "btn btn-outline-danger", method: :delete, data: { confirm: t('u sure') } %>
 </div>
 </p>
