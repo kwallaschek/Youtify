@@ -1,12 +1,17 @@
-<div >
 
-  <ul class="mt-4">
-    <div id="ml-0">Playlists</div>
+  <div class="ml-4" id="sidebarList">
+
+    <div id="ml-0"> <%= t('Pl') %> </div>
+
     <%@playlists.each do |pl| %>
-      <div id="litem" class="justify-content-center">
-        <%= link_to pl.name, welcome_set_current_playlist_path(:id => pl.id), method: :post  %>
+
+      <div id="litem" class="row mt-1 border-bottom">
+        <%= render partial: "welcome/playlistListItem", locals: { playlist: pl} %>
       </div>
     <% end %>
-  </ul>
 
+
+</div>
+<div class="mt-2 ml-3 mr-2">
+  <%= render 'welcome/playlistModal' %>
 </div>

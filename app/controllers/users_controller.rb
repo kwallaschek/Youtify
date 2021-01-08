@@ -46,6 +46,8 @@ class UsersController < ApplicationController
   def set_user
     begin
       @user = User.find(params[:id])
+      @playlists = @user.playlists
+      @playlist = Playlist.new
     rescue ActiveRecord::RecordNotFound
       redirect_to root_path
     end

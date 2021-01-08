@@ -2,6 +2,7 @@
 #page-content {
   background-color: lightgrey;
   min-height: 100vh;
+  min-width: 100vh;
 }
 #sidebar {
   background-color: darkgrey;
@@ -9,5 +10,14 @@
 }
 
 #litem {
-  
+  vertical-align: middle;
+  border-bottom: 1px;
+  border-bottom-color: black;
+}
+#sidebarList {
+  height: 70%;
+}
+#plButton {
+  margin-right: 0;
+  float: right;
 }

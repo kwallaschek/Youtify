@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe "playlist/show.html.erb", type: :view do
+RSpec.describe "playlists/index.html.erb", type: :view do
   pending "add some examples to (or delete) #{__FILE__}"
 end

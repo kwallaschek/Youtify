@@ -1,0 +1,8 @@
+<div class="col-7 text-left" >
+    <%= link_to playlist.name, welcome_set_current_playlist_path(:id => playlist.id), method: :post  %>
+ </div>
+  <div class="col-5 btn-group-sm">
+    <%= render partial: "welcome/playlistEditModal", locals: { playlist: playlist} %>
+    <%= link_to "D", playlist_path(playlist), class: "btn btn-outline-danger", method: :delete, data: { confirm: t('u sure Pl', pl: playlist.name) } %>
+
+  </div>

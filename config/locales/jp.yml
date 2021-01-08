@@ -1,6 +1,11 @@
 jp:
   hello: 'ハローワールド'
   uname: 'ユーザー名'
+  name: '名前'
+  noSongs: '曲がありません'
+  create: '作成'
+  update: '編集'
+  editProfile: 'プロファイルの編集'
   password: "パスワード"
   email: "メールアドレス"
   home: "ホーム"
@@ -18,6 +23,7 @@ jp:
   connect yt: 'YouTubeとつながる'
   delete profile: 'プロファイルを削除'
   u sure: "それは確かですか?"
+  u sure Pl: '本当に"%{pl}"削除したいですか？'
   t_now: "今は："
   alert require user: "このアクションを実行するにはログインする必要があります"
   save error: "以下のエラーにより、{{obj}}が保存されませんでした"
@@ -27,7 +33,20 @@ jp:
   user update success: "アカウント情報が正常に更新されました"
   welcome sign up: "いらっしゃいませ、サインアップに成功しました"
   acc delete success: "アカウントの削除に成功しました"
-  pl deleted: 'プレイリストの削除しました'
+  pl deleted: 'プレイリストを削除しました'
+  new Pl: 'プレイリストを作成'
+  Pl: 'プレイリスト'
+  name Pl: 'プレイリスト名'
+  create Pl success: 'プレイリスト作成しました'
+  add Song: '曲追加'
+  yid: "YouTubeビデオID入力してください"
+  yid_s: 'YouTubeビデオID'
+  songModal: 'プレイリスト"%{obj}"に曲を追加'
+  addSong: '曲を追加'
+  addSong success: '曲を追加しました'
+  song deleted: '曲を削除しました'
   time:
     formats:
       long: "%Y年%m月%d日　%H時%M分%S秒"
+  pl update success: "プレイリスト編集しました"
+  plEditModalTitle: '"%{pl}"を編集'

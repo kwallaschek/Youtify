@@ -1,6 +1,11 @@
 de:
   hello: "Hallo Welt"
   uname: 'Nutzername'
+  name: 'Name'
+  noSongs: 'Noch keine Lieder'
+  update: 'Aktualisieren'
+  editProfile: 'Profil aktualisieren'
+  create: 'Erstellen'
   password: "Passwort"
   email: 'E-Mail Adresse'
   home: "Home"
@@ -18,9 +23,10 @@ de:
   connect yt: 'Mit YouTube verbinden'
   delete profile: 'Profil löschen'
   u sure: "Sind sie sicher?"
+  u sure Pl: 'Sind sie sicher, dass sie "%{pl}" löschen möchten?'
   t_now: "Die aktuelle Zeit: "
   alert require user: "Um diese Aktion durchzuführen zu können musst du eingeloggt sein"
-  save error: "Die folgenden Fehler verhinderten das Speichern von {{obj}}"
+  save error: "Die folgenden Fehler verhinderten das Speichern von %{obj}"
   logged in success: "Erfolgreich eingeloggt"
   logged in error: "Es gab einen Fehler mit Ihren Anmeldedaten"
   logged out: "Erfolgreich ausgeloggt"
@@ -28,6 +34,19 @@ de:
   welcome sign up: "Willkommen, Sie haben sich erfolgreich angemeldet"
   acc delete success: "Account erfolgreich gelöscht"
   pl deleted: 'Playlist erfolgreich gelöscht'
+  new Pl: 'Neue Playlist'
+  Pl: 'Playlists'
+  name Pl: 'Playlistname'
+  create Pl success: 'Playlist erfolgreich erstellt'
+  add Song: 'Lied hinzufügen'
+  yid: 'Geben Sie eine YouTube Video ID'
+  yid_s: 'YouTube Video ID'
+  songModal: 'Lied zu Playlist "%{obj}" hinzufügen'
+  addSong: 'Lied hinzufügen'
+  addSong success: 'Lied erfolgreich hinzugefügt'
+  song deleted: 'Lied gelöscht'
   time:
     formats:
       long: "%d.%m.%Y,　%H:%M:%S"
+  pl update success: "Playlist erfolgreich geupdated"
+  plEditModalTitle: '"%{pl}" ändern'

@@ -1,0 +1,40 @@
+<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#songModal"> <%= t('add Song') %> </button>
+
+<div class="modal fade" id= "songModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><%= t('songModal', obj: @current_playlist.name) %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <%= render 'shared/errors', obj: @song %>
+              <%= form_with(model: @song, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
+                <div class="form-group row">
+                  <%= f.label t('yid_s'), class: "col-3 col-form-label text-light" %>
+                  <div class="col-10">
+                    <%= f.text_field :name, class: "form-control shadow rounded", placeholder: t('yid') %>
+                  </div>
+                </div>
+                <%= hidden_field_tag "song[playlist_id]", "#{@current_playlist.id}" %>
+                <div class="form-group row justify-content-center">
+                  <%= f.submit t('addSong'), class: "btn btn-outline-light btn-lg" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--      </div>-->
+    </div>
+  </div>
+</div>

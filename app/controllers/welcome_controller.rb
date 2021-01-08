@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
-  before_action :set_first_playlists, only: [:index]
+  before_action :set_first_playlists
   def index
+
   end
 
   def set_current_playlist
@@ -16,8 +17,14 @@ class WelcomeController < ApplicationController
   end
   def set_first_playlists
     if logged_in?
-      @current_playlist  ||= current_user.playlists.first
+      if params[:id].nil?
+        @current_playlist  ||= current_user.playlists.first
+      else
+        @current_playlist = Playlist.find(params[:id])
+      end
       @playlists  ||= current_user.playlists
+      @playlist = Playlist.new(:user_id => @current_user)
+      @song = Song.new
     end
   end
 end

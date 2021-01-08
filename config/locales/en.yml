@@ -32,6 +32,11 @@
 en:
   hello: "Hello world"
   uname: "Username"
+  name: 'Name'
+  noSongs: 'No Songs yet'
+  create: 'Create'
+  update: 'Update'
+  editProfile: 'Edit your Profile'
   password: "Password"
   email: "Email"
   home: "Home"
@@ -45,10 +50,10 @@ en:
   enter password: "Enter your password"
   enter mail: "Enter your email address"
   enter uname: "Enter a username"
-  edit profile: 'Profil bearbeiten'
-  connect yt: 'Mit YouTube verbinden'
-  delete profile: 'Profil löschen'
+  connect yt: 'Connect with YouTube'
+  delete profile: 'Delete Profile'
   u sure: "Are you sure?"
+  u sure Pl: 'Are you sure you want to delete "%{pl}"?'
   t_now: "The time is now: "
   alert require user: "You must be logged in to perform that action"
   save error: "The following errors prevented the {{obj}} from being saved"
@@ -59,6 +64,19 @@ en:
   welcome sign up: "Welcome, you have successfully signed up"
   acc delete success: "Account successfully deleted"
   pl deleted: 'Playlist deleted successfully'
+  new Pl: 'New Playlist'
+  Pl: 'Playlists'
+  name Pl: 'Name of Playlist'
+  create Pl success: 'Playlist successfully created'
+  add Song: 'Add Song'
+  yid: 'Enter a YouTube video ID'
+  yid_s: 'YouTube Video ID'
+  songModal: 'Add a song to playlist "%{obj}"'
+  addSong: 'Add song'
+  addSong success: 'Song successfully added'
+  song deleted: 'Song deleted'
   time:
     formats:
       long: "%Y/%d/%m　%H:%M:%S"
+  pl update success: "Playlist successfully updated"
+  plEditModalTitle: 'Edit "%{pl}"'
