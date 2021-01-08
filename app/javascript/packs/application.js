@@ -23,3 +23,8 @@ import "../stylesheets/flags.css"
 //     $('[data-toggle="tooltip"]').tooltip()
 //     $('[data-toggle="popover"]').popover()
 // })
+$(document).on('turbolinks:load', function() {
+    setTimeout(function() {
+        $('.alert').fadeOut();
+    }, 5000);
+})
