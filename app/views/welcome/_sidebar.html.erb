@@ -6,7 +6,7 @@
     <%@playlists.each do |pl| %>
 
       <div id="litem" class="row mt-1 border-bottom">
-        <%= render partial: "welcome/playlistListItem", locals: { playlist: pl} %>
+          <%= render partial: "welcome/playlistListItem", locals: { playlist: pl, rem: true} %>
       </div>
     <% end %>
 
