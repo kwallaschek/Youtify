@@ -22,7 +22,8 @@
       <%= yield %>
     </div>
     </div>
-    <%= render 'layouts/footer' %>
+    <%= render 'layouts/footer', remote:true%>
+
     <% else %>
       <%= render 'layouts/messages' %>
       <%= yield %>

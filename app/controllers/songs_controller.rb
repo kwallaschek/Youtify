@@ -1,4 +1,4 @@
-class SongsController < ApplicationController
+class SongsController < PlaylistsController
   before_action :set_song, only: %i[show edit update destroy]
   def create
     @song = Song.new(song_params)
