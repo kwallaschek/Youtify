@@ -1,15 +1,11 @@
-<div class="row">
-  <div class="col-1">
-    <button>Play</button>
-  </div>
 
-  <div class="col-3">
+    <button class="btn"><%= icon("play-circle", class: "playButton") %></button>
+
+
     <%= song.name %>
-  </div>
-  <div class="col-6">
 
-  </div>
-  <div class="col-2">
-    <%= link_to "D", song_path(song), class: "btn btn-outline-danger", method: :delete, data: { confirm: t('u sure Pl', pl: song.name) } %>
-  </div>
-</div>
+
+
+    <%= link_to icon("trash-fill",class: "deleteButtonSongListItem"), song_path(song), class: "btn text-danger", method: :delete, data: { confirm: t('u sure Pl', pl: song.name) } %>
+
+

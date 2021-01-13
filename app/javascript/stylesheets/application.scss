@@ -17,7 +17,15 @@
 #sidebarList {
   height: 70%;
 }
-#plButton {
-  margin-right: 0;
-  float: right;
+.playButton {
+  width: 32px;
+  height: 32px;
+}
+
+.deleteButtonSongListItem {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
