@@ -8,7 +8,12 @@ class PlaylistsController < WelcomeController
     @songs = @playlist.songs
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.js {render layout: false} # Add this line to you respond_to block
+    end
+  end
 
   def edit; end
 

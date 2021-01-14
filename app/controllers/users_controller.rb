@@ -7,6 +7,13 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    respond_to do |format|
+      format.html
+      format.js {render layout: false} # Add this line to you respond_to block
+    end
+  end
+
   def edit
   end
 
