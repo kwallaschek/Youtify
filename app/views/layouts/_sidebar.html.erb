@@ -3,15 +3,15 @@
 
     <div id="ml-0"> <%= t('Pl') %> </div>
 
-    <%@playlists.each do |pl| %>
+    <%current_user.playlists.each do |pl| %>
 
       <div id="litem" class="row mt-1 border-bottom">
-          <%= render partial: "welcome/playlistListItem", locals: { playlist: pl, rem: true} %>
+        <%= render partial: "layouts/playlistListItem", locals: { playlist: pl} %>
       </div>
     <% end %>
 
 
 </div>
 <div class="mt-2 ml-3 mr-2">
-  <%= render 'welcome/playlistModal' %>
+  <%= render 'layouts/playlistModal' %>
 </div>

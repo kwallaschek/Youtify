@@ -1,0 +1,11 @@
+
+    <button class="btn"><%= icon("play-circle", class: "playButton") %></button>
+
+
+    <%= song.name %>
+
+
+
+    <%= link_to icon("trash-fill",class: "deleteButtonSongListItem vertical-center"), song_path(song), class: "btn text-danger", method: :delete, data: { confirm: t('u sure Pl', pl: song.name) } %>
+
+

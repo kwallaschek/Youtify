@@ -1,23 +1,11 @@
 <% if !logged_in? %>
-<h2><%= t('hello') %></h2>
-<p>
-   <%= t('t_now') %><%= l(Time.now, format: :long) %>
-</p>
+  <div class="landing-center">
+    <h2><%= t('hello') %></h2>
+      <p>
+        <%= t('t_now') %><%= l(Time.now, format: :long) %>
+      </p>
+  </div>
 
 <% else %>
-  <div class="row mt-1 mb-1 ml-1 mr-1">
-    <div class="col-11">
-    Line with explanation of playlist content and button to add songs:
-    </div>
-    <div class="col-1">
-      <% if !@current_playlist.nil? %>
-        <%= render 'songModal' %>
-      <% end %>
-    </div>
-  </div>
-  <div id=page-content>
-    <% if !@current_playlist.nil? %>
-      <div id="playlist"></div>
-    <% end %>
-  </div>
+  <p>Home</p>
 <% end %>

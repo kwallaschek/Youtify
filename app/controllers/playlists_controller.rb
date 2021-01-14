@@ -16,7 +16,7 @@ class PlaylistsController < WelcomeController
     @playlist = Playlist.find(params[:id])
     if @playlist.update(playlist_params)
       flash[:notice] = t('pl update success')
-      redirect_to controller: 'welcome', action: 'index', id: @playlist.id
+      redirect_to playlist_path(@playlist)
     else
       flash[:alert] = "failed"
       redirect_to controller: 'welcome', action: 'index', id: @playlist.id
@@ -28,23 +28,25 @@ class PlaylistsController < WelcomeController
     @playlist.user = current_user
     if @playlist.save
       flash[:notice] = t('create Pl success')
-      redirect_to controller: 'welcome', action: 'index', id: @playlist.id
+      redirect_to playlist_path(@playlist.id)
     else
       flash[:alert] = "failed"
-      redirect_to controller: 'welcome', action: 'index', id: @playlist.id
+      redirect_to controller: 'welcome', action: 'index'
     end
   end
 
   def destroy
     @playlist.destroy
     flash[:notice] = t('pl deleted')
-    redirect_to root_path
+    redirect_to playlist_path(current_user.playlists.first)
   end
 
   private
 
   def set_pl
     @playlist = Playlist.find(params[:id])
+    @playlists = current_user.playlists.all
+    @song = Song.new
   end
 
   def require_same_user

@@ -7,10 +7,10 @@ class SongsController < PlaylistsController
     @song.yid = 'GFd3g45aS'
     if @song.save
       flash[:notice] = t('addSong success')
-      redirect_to "/?id=#{song_params[:playlist_id]}"
+      redirect_to playlist_path(song_params[:playlist_id])
     else
       p @song.errors
-      redirect_to root_path
+      redirect_to playlist_path(song_params[:playlist_id])
     end
   end
 

@@ -21,5 +21,10 @@ module Youtify
 
     # Must include to get inline SVGs to work in deploy
     config.assets.css_compressor = :sass
+
+    # Override field_with_error so it does not mess up the views, since we have own error flash messages
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+      html_tag
+    }
   end
 end
