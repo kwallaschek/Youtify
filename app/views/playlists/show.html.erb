@@ -1,2 +1,23 @@
-<h1>Playlist#show</h1>
-<p>Find me in app/views/playlist/show.html.erb</p>
+<div class="row mt-1 mb-1 ml-1 mr-1">
+  <div class="col-11">
+  Line with explanation of playlist content and button to add songs:
+</div>
+  <div class="col-1">
+  <%= render 'songModal' %>
+</div>
+</div>
+<div>
+  <ul class="list-group col-md-12">
+    <% if @playlist.songs.size > 0 %>
+      <% @playlist.songs.each do |sg| %>
+        <li class="list-group-item">
+          <%= render partial: "songListItem", locals: { song: sg} %>
+        </li>
+      <% end %>
+    <% else %>
+      <div>　<%= t('noSongs') %>　</div>
+    <% end %>
+  </ul>
+
+</div>
+
