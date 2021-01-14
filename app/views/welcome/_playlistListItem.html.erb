@@ -2,7 +2,8 @@
     <%= link_to playlist.name, welcome_set_current_playlist_path(:id => playlist.id), method: :post  %>
  </div>
   <div class="col-5 btn-group-sm">
-    <%= render partial: "welcome/playlistEditModal", locals: { playlist: playlist} %>
+    <%#= render partial: "welcome/playlistEditModal", locals: { playlist: playlist} %>
+    <%= link_to icon('pen-fill'), edit_playlist_path(playlist, class: 'btn') %>
     <%= link_to icon("trash-fill"), playlist_path(playlist), class: "btn btn-outline text-danger", method: :delete, data: { confirm: t('u sure Pl', pl: playlist.name) } %>
 
   </div>

@@ -1,8 +1,10 @@
 <% if !logged_in? %>
-<h2><%= t('hello') %></h2>
-<p>
-   <%= t('t_now') %><%= l(Time.now, format: :long) %>
-</p>
+  <div class="landing-center">
+    <h2><%= t('hello') %></h2>
+      <p>
+        <%= t('t_now') %><%= l(Time.now, format: :long) %>
+      </p>
+  </div>
 
 <% else %>
   <div class="row mt-1 mb-1 ml-1 mr-1">

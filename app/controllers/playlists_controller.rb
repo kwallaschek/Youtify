@@ -45,6 +45,7 @@ class PlaylistsController < ApplicationController
 
   def set_pl
     @playlist = Playlist.find(params[:id])
+    @playlists = current_user.playlists.all
   end
 
   def require_same_user
