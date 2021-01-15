@@ -6,14 +6,18 @@ class SongsController < ApplicationController
     @song.stop_timecode = '0:00'
     begin
       extractedYid = @song.yid[/([a-z]|[A-Z]|[0-9]|_){11}/]
-      video = Yt::Video.new id: extractedYid
-      @song.name = video.title
+      begin
+        video = Yt::Video.new id: extractedYid
+        flash[:alarm] = "Couldn't find a video with this ID"
+        @song.name = video.title
+        @song.yid = extractedYid
+      end
     rescue
-      p "This didnt work"
+      flash[:alarm] = "No ID found"
     end
 
-    @song.yid = extractedYid
-    p extractedYid
+
+
 
     if @song.save
       flash[:notice] = t('addSong success')
@@ -25,9 +29,10 @@ class SongsController < ApplicationController
   end
 
   def destroy
+    plid = @song.playlist_id
     @song.destroy
     flash[:notice] = t('song deleted')
-    redirect_to root_path
+    redirect_to playlist_path(plid)
   end
 
   private
