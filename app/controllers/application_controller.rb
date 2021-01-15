@@ -1,11 +1,22 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :current_song, :changeSong
 
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def current_song
+    @current_song ||= @current_user.playlists.first.songs.first
+  end
+
+  def changeSong
+    @current_song = Song.find(params[:song])
+    p "changed song"
+    respond_to do |format|
+      format.html {redirect_to playlist_path(@current_song.playlist_id)}
+    end
+  end
   def logged_in?
     !!current_user
   end

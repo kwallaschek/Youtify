@@ -8,22 +8,21 @@ class SongsController < ApplicationController
       extractedYid = @song.yid[/([a-z]|[A-Z]|[0-9]|_){11}/]
       begin
         video = Yt::Video.new id: extractedYid
-        flash[:alarm] = "Couldn't find a video with this ID"
         @song.name = video.title
         @song.yid = extractedYid
+      rescue
+        flash[:alarm] = "Couldn't find a video with this ID"
+
       end
     rescue
       flash[:alarm] = "No ID found"
     end
 
-
-
-
     if @song.save
       flash[:notice] = t('addSong success')
       redirect_to playlist_path(song_params[:playlist_id])
     else
-      p @song.errors
+      flash[:alarm] = "Couldn't find video ID"
       redirect_to playlist_path(song_params[:playlist_id])
     end
   end

@@ -1,10 +1,18 @@
+<button href='#' id="play-button<%=song.id %>" class="btn" ><%= icon("play-circle", class: "playButton") %></button>
+<%= song.name %>
+<%= link_to icon("trash-fill",class: "deleteButtonSongListItem vertical-center"), song_path(song), class: "btn text-danger", method: :delete, data: { confirm: t('u sure Pl', pl: song.name) } %>
 
-    <button class="btn"><%= icon("play-circle", class: "playButton") %></button>
+<script>
+    $('#play-button<%=song.id %>').click(function (e) {
 
+        console.log("dddd")
+        $.ajax({
+            type: 'POST',
+            url: '<%=playlist_changeSong_path(:playlist_id => song.playlist_id) %>',
+            dataType: 'json',
+            data: { 'song' : "<%= song.id %>" }
+        });
 
-    <%= song.name %>
-
-
-    <%= link_to icon("trash-fill",class: "deleteButtonSongListItem vertical-center"), song_path(song), class: "btn text-danger", method: :delete, data: { confirm: t('u sure Pl', pl: song.name) } %>
-
-
+        return false;
+    })
+</script>

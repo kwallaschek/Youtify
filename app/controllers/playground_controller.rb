@@ -5,7 +5,7 @@ class PlaygroundController < ApplicationController
     Yt.configure do |config|
       config.api_key = "AIzaSyCJk_Y4ViQjwJhhFfW-Wyd9t2dLYqWeT-U"
     end
-    @video = Yt::Video.new id: "jrsAqmh_mak"
+    @video = Yt::Video.new id: @current_song.yid
   end
 
   private
