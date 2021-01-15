@@ -4,7 +4,15 @@ class SongsController < ApplicationController
     @song = Song.new(song_params)
     @song.start_timecode = '0:00'
     @song.stop_timecode = '0:00'
-    @song.yid = 'GFd3g45aS'
+    begin
+      extractedYid = @song.yid[/([a-z]|[A-Z]|[0-9]|_){11}/]
+    rescue
+      p "This didnt work"
+    end
+
+    @song.yid = extractedYid
+    p extractedYid
+
     if @song.save
       flash[:notice] = t('addSong success')
       redirect_to playlist_path(song_params[:playlist_id])
@@ -22,7 +30,7 @@ class SongsController < ApplicationController
 
   private
   def song_params
-    params.require(:song).permit( :name, :start_timecode, :stop_timecode, :playlist_id)
+    params.require(:song).permit( :name, :yid, :start_timecode, :stop_timecode, :playlist_id)
   end
   def set_song
     @song = Song.find(params[:id])

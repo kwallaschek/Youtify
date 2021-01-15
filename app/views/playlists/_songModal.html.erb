@@ -18,7 +18,7 @@
                 <div class="form-group row">
                   <%= f.label t('yid_s'), class: "col-3 col-form-label text-light" %>
                   <div class="col-10">
-                    <%= f.text_field :name, class: "form-control shadow rounded", placeholder: t('yid') %>
+                    <%= f.text_field :yid, class: "form-control shadow rounded", placeholder: t('yid') %>
                   </div>
                 </div>
                 <%= hidden_field_tag "song[playlist_id]", "#{@playlist.id}" %>
