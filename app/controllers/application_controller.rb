@@ -7,14 +7,16 @@ class ApplicationController < ActionController::Base
   end
 
   def current_song
-    @current_song ||= @current_user.playlists.first.songs.first
+    @current_song ||= Yt::Video.new id: 'jrsAqmh_mak'
   end
 
   def changeSong
     @current_song = Song.find(params[:song])
     p "changed song"
     respond_to do |format|
-      format.html {redirect_to playlist_path(@current_song.playlist_id)}
+      #format.html{render'layouts/youtubePlayer'}
+
+      format.js{render 'layouts/changeSong', layout: false}
     end
   end
   def logged_in?

@@ -3,7 +3,7 @@
 
 
 // Fetch video info (using a proxy to avoid CORS errors)
-fetch('https://cors-anywhere.herokuapp.com/' + "https://www.youtube.com/get_video_info?video_id=" + "E7wCD64XiX0").then(response => {
+fetch('https://cors-anywhere.herokuapp.com/' + "https://www.youtube.com/get_video_info?video_id=" + "<%=current_song.yid %>").then(response => {
 if (response.ok) {
 response.text().then(ytData => {
 
@@ -34,4 +34,8 @@ var audioURL = getAdaptiveFormats[findAudioInfo].url;
   }</script>
 <audio id="youtube" controls></audio>
 
-<p><%=current_song.name %></p>
+<% if !current_song.nil? %>
+  <p><%=current_song.name %></p>
+<% else %>
+  <p>Choose a song</p>
+<% end %>

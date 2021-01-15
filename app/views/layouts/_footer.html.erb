@@ -1,7 +1,11 @@
 <div id="sticky-footer" class="py-4 bg-dark text-white fixed-bottom">
   <div class="row">
     <div class="col-10 text-center">
-     <%= render :template => "playground/index" %>
+
+      <div id="player">
+        <%#= render :template => "playground/index" %>
+        <%= render 'layouts/youtubePlayer' %>
+      </div>
     </div>
 
   </div>

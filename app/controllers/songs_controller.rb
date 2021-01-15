@@ -5,7 +5,7 @@ class SongsController < ApplicationController
     @song.start_timecode = '0:00'
     @song.stop_timecode = '0:00'
     begin
-      extractedYid = @song.yid[/([a-z]|[A-Z]|[0-9]|_){11}/]
+      extractedYid = @song.yid[/([a-z]|[A-Z]|[0-9]|_|-){11}/]
       begin
         video = Yt::Video.new id: extractedYid
         @song.name = video.title
