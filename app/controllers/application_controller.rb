@@ -7,15 +7,14 @@ class ApplicationController < ActionController::Base
   end
 
   def current_song
-    @current_song ||= Yt::Video.new id: 'jrsAqmh_mak'
+    @current_song
   end
 
   def changeSong
-    @current_song = Song.find(params[:song])
+    @current_song = Yt::Video.new id: Song.find(params[:song]).yid
     p "changed song"
     respond_to do |format|
-      #format.html{render'layouts/youtubePlayer'}
-
+      #format.html{render'layouts/changeSong'}
       format.js{render 'layouts/changeSong', layout: false}
     end
   end

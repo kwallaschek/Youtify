@@ -3,25 +3,29 @@
 
 
 // Fetch video info (using a proxy to avoid CORS errors)
-fetch('https://cors-anywhere.herokuapp.com/' + "https://www.youtube.com/get_video_info?video_id=" + "<%=current_song.yid %>").then(response => {
+fetch('https://cors-anywhere.herokuapp.com/' + "https://www.youtube.com/get_video_info?video_id=" + "<%=current_song.id %>").then(response => {
 if (response.ok) {
-response.text().then(ytData => {
+  response.text().then(ytData => {
+    try{
+        // parse response to find audio info
+        var ytData = parse_str(ytData);
+        var getAdaptiveFormats = JSON.parse(ytData.player_response).streamingData.adaptiveFormats;
+        var findAudioInfo = getAdaptiveFormats.findIndex(obj => obj.audioQuality);
 
-// parse response to find audio info
-var ytData = parse_str(ytData);
-var getAdaptiveFormats = JSON.parse(ytData.player_response).streamingData.adaptiveFormats;
-var findAudioInfo = getAdaptiveFormats.findIndex(obj => obj.audioQuality);
+        // get the URL for the audio file
+        var audioURL = getAdaptiveFormats[findAudioInfo].url;
 
-// get the URL for the audio file
-var audioURL = getAdaptiveFormats[findAudioInfo].url;
-
-// update the <audio> element src
-  var youtubeAudio = document.getElementById('youtube');
-  youtubeAudio.src = audioURL;
-
+        // update the <audio> element src
+        var youtubeAudio = document.getElementById('youtube');
+        youtubeAudio.src = audioURL;
+    }catch (e) {
+        $('#player').html("<%= j(render 'layouts/youtubePlayer')%>");
+    }
   });
+} else {
+    $('#player').html("<%= j(render 'layouts/youtubePlayer')%>");
   }
-  });
+});
 
   function parse_str(str) {
   return str.split('&').reduce(function(params, param) {
@@ -35,7 +39,7 @@ var audioURL = getAdaptiveFormats[findAudioInfo].url;
 <audio id="youtube" controls></audio>
 
 <% if !current_song.nil? %>
-  <p><%=current_song.name %></p>
+  <p><%=current_song.title %></p>
 <% else %>
   <p>Choose a song</p>
 <% end %>
