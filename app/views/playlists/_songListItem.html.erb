@@ -10,7 +10,7 @@
             type: 'POST',
             url: '<%=playlist_changeSong_path(:playlist_id => song.playlist_id, :song => song.id) %>',
         });
-
+        document.getElementById("songId<%=song.id %>").click();
         return false;
     })
 </script>

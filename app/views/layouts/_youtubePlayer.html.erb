@@ -1,9 +1,6 @@
+
 <% if !current_song.nil? %>
 <!--  <iframe src='https://www.youtube.com/embed/<%#= current_song.id %>?rel=0&autoplay=1&modestbranding=1' frameborder='0' allowfullscreen></iframe>-->
-
-  <div id='testPause'>
-    <%= icon('pen-fill') %>
-  </div>
 
 
 <div id="youtube-player">
@@ -34,10 +31,19 @@
         e.onclick=function(){r.getPlayerState()===YT.PlayerState.PLAYING||r.getPlayerState()===YT.PlayerState.BUFFERING?(r.pauseVideo(),o(!1)):(r.playVideo(),o(!0))};
         var r=new YT.Player("youtube-player",{height:"0",width:"0",videoId:e.dataset.video,playerVars:{autoplay:e.dataset.autoplay,loop:e.dataset.loop},
             events:{onReady:function(e){r.setPlaybackQuality("small"),o(r.getPlayerState()!==YT.PlayerState.CUED)},
-                onStateChange:function(e){e.data===YT.PlayerState.ENDED&&o(!1)}}})
-        var controls = document.getElementById("testPause")
+                onStateChange:function(e){r.getPlayerState()===YT.PlayerState.PLAYING
+                ||r.getPlayerState()===YT.PlayerState.BUFFERING?
+                    (document.getElementById("playButtonToggle").style.display="none", document.getElementById("pauseButtonToggle").style.display="block")
+                    :(document.getElementById("playButtonToggle").style.display="block", document.getElementById("pauseButtonToggle").style.display="none");e.data===YT.PlayerState.ENDED&&o(!1)}}})
+        var playButton = document.getElementById("playButton")
+        var prev = document.getElementById("prevButton")
+        var next = document.getElementById("nextButton")
+        playButton.onclick=function(){
+            r.getPlayerState()===YT.PlayerState.PLAYING
+            ||r.getPlayerState()===YT.PlayerState.BUFFERING?
+                r.pauseVideo()
+                :r.playVideo()}
 
-      controls.onclick=function(){r.pauseVideo(), console.log("pressed")}
     }
     $(document).ready(onYouTubeIframeAPIReady())
 

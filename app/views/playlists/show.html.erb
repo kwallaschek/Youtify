@@ -10,7 +10,7 @@
   <ul class="list-group col-md-12">
     <% if @playlist.songs.size > 0 %>
       <% @playlist.songs.each do |sg| %>
-        <li class="list-group-item">
+        <li class="list-group-item" id="songId<%=sg.id %>">
           <%= render partial: "songListItem", locals: { song: sg} %>
         </li>
       <% end %>
@@ -21,3 +21,13 @@
 
 </div>
 
+<script>
+$('.list-group-item').on('click', function() {
+var $this = $(this);
+var $alias = $this.data('alias');
+
+$('.active').removeClass('active');
+$this.toggleClass('active')
+
+})
+</script>
