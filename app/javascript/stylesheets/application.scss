@@ -55,3 +55,16 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
+.controlButton {
+  width: 50px;
+  margin-left: 5px;
+  margin-right: 5px;
+  height: 50px;
+}
+#playButton{
+
+}
+#pauseButtonToggle{
+  display: none;
+}

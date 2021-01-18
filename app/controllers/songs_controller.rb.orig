@@ -17,7 +17,13 @@ class SongsController < ApplicationController
     rescue
       flash[:alarm] = "No ID found"
     end
+<<<<<<< HEAD
+=======
+    begin
+      @song.position = Playlist.find_by(:id => @song.playlist_id).songs.length + 1
+    end
 
+>>>>>>> feature/changeSong
     if @song.save
       flash[:notice] = t('addSong success')
       redirect_to playlist_path(song_params[:playlist_id])

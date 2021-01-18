@@ -4,11 +4,14 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   get 'users', to: 'users#new'
   resources :users, except: [:index]
-  resources :playlists
+  resources :playlists do
+    post 'changeSong', to: 'application#changeSong'
+
+  end
   resources :songs
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   get 'tbd', to: 'playground#index'
-
+  post 'nextSong', to: 'application#nextSong'
 end
