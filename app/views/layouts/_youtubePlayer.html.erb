@@ -4,7 +4,7 @@
 
 
 <div id="youtube-player">
-  <div data-video="<%= current_song.id %>"
+  <div data-video="<%= current_song.yid %>"
        data-autoplay="1"
        data-loop="1"
        id= "youtube-audio">
@@ -22,6 +22,11 @@
 */
 
     function onYouTubeIframeAPIReady(){
+        $('.active').removeClass('active');
+        document.getElementById("songId<%=current_song.id %>").classList.toggle('active');
+
+
+
         var e=document.getElementById("youtube-audio"),t=document.createElement("img");
         t.setAttribute("id","youtube-icon"),t.style.cssText="cursor:pointer;cursor:hand",e.appendChild(t);
         var a=document.createElement("div");
@@ -34,7 +39,14 @@
                 onStateChange:function(e){r.getPlayerState()===YT.PlayerState.PLAYING
                 ||r.getPlayerState()===YT.PlayerState.BUFFERING?
                     (document.getElementById("playButtonToggle").style.display="none", document.getElementById("pauseButtonToggle").style.display="block")
-                    :(document.getElementById("playButtonToggle").style.display="block", document.getElementById("pauseButtonToggle").style.display="none");e.data===YT.PlayerState.ENDED&&o(!1)}}})
+                    :(document.getElementById("playButtonToggle").style.display="block", document.getElementById("pauseButtonToggle").style.display="none");
+                if (r.getPlayerState()===YT.PlayerState.ENDED){
+                    $.ajax({
+                        type: 'POST',
+                        url: '<%=nextSong_path(:playlist_id => current_song.playlist_id, :id => current_song.id, :next => "next") %>',
+                    });
+                };
+                }}})
         var playButton = document.getElementById("playButton")
         var prev = document.getElementById("prevButton")
         var next = document.getElementById("nextButton")
@@ -43,7 +55,21 @@
             ||r.getPlayerState()===YT.PlayerState.BUFFERING?
                 r.pauseVideo()
                 :r.playVideo()}
+        next.onclick=function(){
+            $.ajax({
+                    type: 'POST',
+                    url: '<%=nextSong_path(:playlist_id => current_song.playlist_id, :id => current_song.id, :next => "next") %>',
+                });
 
+            return false;
+            };
+        prev.onclick=function(){
+            $.ajax({
+                type: 'POST',
+                url: '<%=nextSong_path(:playlist_id => current_song.playlist_id, :id => current_song.id, :next => "prev") %>',
+            });
+            return false;
+        };
     }
     $(document).ready(onYouTubeIframeAPIReady())
 

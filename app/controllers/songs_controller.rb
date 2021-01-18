@@ -12,10 +12,13 @@ class SongsController < ApplicationController
         @song.yid = extractedYid
       rescue
         flash[:alarm] = "Couldn't find a video with this ID"
-
       end
+
     rescue
       flash[:alarm] = "No ID found"
+    end
+    begin
+      @song.position = Playlist.find_by(:id => @song.playlist_id).songs.length + 1
     end
 
     if @song.save
@@ -36,7 +39,7 @@ class SongsController < ApplicationController
 
   private
   def song_params
-    params.require(:song).permit( :name, :yid, :start_timecode, :stop_timecode, :playlist_id)
+    params.require(:song).permit( :name, :yid, :start_timecode, :stop_timecode, :playlist_id, :position)
   end
   def set_song
     @song = Song.find(params[:id])

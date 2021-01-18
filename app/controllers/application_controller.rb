@@ -11,8 +11,26 @@ class ApplicationController < ActionController::Base
   end
 
   def changeSong
-    @current_song = Yt::Video.new id: Song.find(params[:song]).yid
-    p "changed song"
+    #@current_song = Yt::Video.new id: Song.find(params[:song]).yid
+    @current_song = Song.find(params[:song])
+    respond_to do |format|
+      #format.html{render'layouts/changeSong'}
+      format.js{render 'layouts/changeSong', layout: false}
+    end
+  end
+
+  def nextSong
+    if params[:next] == "next"
+      nextSong = Song.where('playlist_id = ? AND id > ?', params[:playlist_id], params[:id])
+      p nextSong
+      @current_song = nextSong.first
+    elsif params[:next] == "prev"
+      nextSong = Song.where('playlist_id = ? AND id < ?', params[:playlist_id], params[:id])
+      p nextSong
+      @current_song = nextSong.last
+    end
+
+
     respond_to do |format|
       #format.html{render'layouts/changeSong'}
       format.js{render 'layouts/changeSong', layout: false}
