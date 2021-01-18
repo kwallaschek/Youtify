@@ -6,5 +6,6 @@
 
 
     <%= link_to icon("trash-fill",class: "deleteButtonSongListItem vertical-center"), song_path(song), class: "btn text-danger", method: :delete, data: { confirm: t('u sure Pl', pl: song.name) } %>
+    <%= link_to icon("pen-fill",class: "editButtonSongListItem vertical-center"), edit_song_path(song), class: "btn" %>
 
 

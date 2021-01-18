@@ -15,16 +15,21 @@ class SongsController < ApplicationController
     rescue
       flash[:alarm] = "No ID found"
     end
-
-
-
-
     if @song.save
       flash[:notice] = t('addSong success')
       redirect_to playlist_path(song_params[:playlist_id])
     else
       p @song.errors
       redirect_to playlist_path(song_params[:playlist_id])
+    end
+  end
+
+  def update
+    if @song.update(song_params)
+      flash[:notice] = t('song update success')
+      redirect_to playlist_path(@song.playlist_id)
+    else
+      render 'edit'
     end
   end
 

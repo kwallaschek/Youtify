@@ -30,8 +30,12 @@
 }
 
 .deleteButtonSongListItem {
-  position: absolute;
-  right: 40px;
+  position: relative;
+  right: 80px;
+}
+.editButtonSongListItem {
+  position: relative;
+  right: 36px;
 }
 .vertical-center {
   margin: 0;
