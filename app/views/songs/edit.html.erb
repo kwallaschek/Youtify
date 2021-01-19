@@ -9,6 +9,19 @@
             <%= f.text_field :name, class: "form-control shadow rounded", placeholder: t('name Pl'), id: "name" %>
           </div>
         </div>
+        <div class="form-group row">
+          <%= f.label "startTime", class: "col-2 col-form-label text-light" %>
+          <div class="col-2">
+            <%= f.text_field :start_timecode, as: :time, class: "form-control shadow rounded", id: "start_timecode" %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= f.label "stopTime", class: "col-2 col-form-label text-light" %>
+          <div class="col-2">
+            <%= f.text_field :stop_timecode, class: "form-control shadow rounded", id: "stop_timecode" %>
+          </div>
+        </div>
+
 
         <div class="form-group row justify-content-center">
           <%= f.submit t('update'),class: "btn btn-outline-light btn-lg" %>
