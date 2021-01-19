@@ -2,14 +2,16 @@ class SongsController < ApplicationController
   before_action :set_song, only: %i[show edit update destroy]
   def create
     @song = Song.new(song_params)
-    @song.start_timecode = '0:00'
-    @song.stop_timecode = '0:00'
+
     begin
       extractedYid = @song.yid[/([a-z]|[A-Z]|[0-9]|_|-){11}/]
       begin
         video = Yt::Video.new id: extractedYid
         @song.name = video.title
         @song.yid = extractedYid
+        @song.songDuration = video.duration
+        @song.startSeconds = 0
+        @song.endSeconds = video.duration
       rescue
         flash[:alarm] = "Couldn't find a video with this ID"
       end
@@ -45,7 +47,7 @@ class SongsController < ApplicationController
 
   private
   def song_params
-    params.require(:song).permit( :name, :yid, :start_timecode, :stop_timecode, :playlist_id, :position)
+    params.require(:song).permit( :name, :yid, :startSeconds, :endSeconds, :playlist_id, :position)
   end
   def set_song
     @song = Song.find(params[:id])

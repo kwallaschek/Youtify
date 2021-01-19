@@ -12,13 +12,13 @@
         <div class="form-group row">
           <%= f.label "startTime", class: "col-2 col-form-label text-light" %>
           <div class="col-2">
-            <%= f.text_field :start_timecode, as: :time, class: "form-control shadow rounded", id: "start_timecode" %>
+            <%= f.text_field :startSeconds, as: :time, class: "form-control shadow rounded", id: "startSeconds" %>
           </div>
         </div>
         <div class="form-group row">
           <%= f.label "stopTime", class: "col-2 col-form-label text-light" %>
           <div class="col-2">
-            <%= f.text_field :stop_timecode, class: "form-control shadow rounded", id: "stop_timecode" %>
+            <%= f.text_field :endSeconds, class: "form-control shadow rounded", id: "endSeconds" %>
           </div>
         </div>
 
