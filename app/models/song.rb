@@ -5,4 +5,24 @@ class Song < ApplicationRecord
   validates :startSeconds, length: { minimum: 1, maximum: 4 }, numericality: { only_integer: true }
   validates :endSeconds, length: { minimum: 1, maximum: 4 }, numericality: { only_integer: true }
   validates :songDuration, length: { minimum: 1, maximum: 4 }, numericality: { only_integer: true }
+
+  def startSeconds=(time)
+    if time.include? ":"
+      t = time.split(":")
+      p t[0].to_i*60 + t[1].to_i
+      super(t[0].to_i*60 + t[1].to_i)
+    else
+      super(time)
+    end
+  end
+
+  def endSeconds=(time)
+    if time.include? ":"
+      t = time.split(":")
+      p t[0].to_i*60 + t[1].to_i
+      super(t[0].to_i*60 + t[1].to_i)
+    else
+      super(time)
+    end
+  end
 end
