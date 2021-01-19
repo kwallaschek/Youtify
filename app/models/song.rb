@@ -5,6 +5,12 @@ class Song < ApplicationRecord
   validates :startSeconds, length: { minimum: 1, maximum: 4 }, numericality: { only_integer: true }
   validates :endSeconds, length: { minimum: 1, maximum: 4 }, numericality: { only_integer: true }
   validates :songDuration, length: { minimum: 1, maximum: 4 }, numericality: { only_integer: true }
+  validate :timesInOrder
+
+  def timesInOrder
+    errors.add :base, :invalid, message: t('errorEbD') unless endSeconds <= songDuration
+    errors.add :base, :invalid, message: t('errorSbE') unless startSeconds < endSeconds
+  end
 
   def startSeconds=(time)
     if time.include? ":"

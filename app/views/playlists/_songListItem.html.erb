@@ -1,8 +1,21 @@
-<button href='#' id="play-button<%=song.id %>" class="btn" ><%= icon("play-circle", class: "playButton") %></button>
-<%= song.name %>
-<%#= link_to 'test', playlist_changeSong_path(:playlist_id => song.playlist_id, :song => song.id), method: :post,remote: true %>
-<%= link_to icon("trash-fill",class: "deleteButtonSongListItem vertical-center"), song_path(song), class: "btn text-danger", method: :delete, data: { confirm: t('u sure Pl', pl: song.name) } %>
-<%= link_to icon("pen-fill",class: "editButtonSongListItem vertical-center"), edit_song_path(song), class: "btn" %>
+<div class="row">
+  <div class="col-1">
+    <button href='#' id="play-button<%=song.id %>" class="btn" ><%= icon("play-circle", class: "playButton") %></button>
+  </div>
+  <div class="col-5">
+    <%= song.name %>
+  </div>
+  <div class="col-3">
+    <%= Time.at(song.startSeconds).utc.strftime("%M:%S") %> - <%= Time.at(song.endSeconds).utc.strftime("%M:%S") %>
+  </div>
+  <div class="col-2">
+    <%= t('before', datetime: time_ago_in_words(song.created_at)) %>
+  </div>
+  <div class="col-1">
+    <%= link_to icon("trash-fill",class: "deleteButtonSongListItem vertical-center"), song_path(song), class: "btn text-danger", method: :delete, data: { confirm: t('u sure Pl', pl: song.name) } %>
+    <%= link_to icon("pen-fill",class: "editButtonSongListItem vertical-center"), edit_song_path(song), class: "btn" %>
+  </div>
+</div>
 
 <script>
     $('#play-button<%=song.id %>').click(function (e) {

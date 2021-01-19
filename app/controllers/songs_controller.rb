@@ -13,18 +13,18 @@ class SongsController < ApplicationController
         @song.startSeconds = 0
         @song.endSeconds = video.duration
       rescue
-        flash[:alarm] = "Couldn't find a video with this ID"
+        flash[:alarm] = t('errorIdNotFound')
       end
 
     rescue
-      flash[:alarm] = "No ID found"
+      flash[:alarm] = t('errorNoIdFound')
     end
 
     if @song.save
       flash[:notice] = t('addSong success')
       redirect_to playlist_path(song_params[:playlist_id])
     else
-      flash[:alarm] = "Couldn't find video ID"
+      flash[:alarm] = t('errorNoIdFound')
       redirect_to playlist_path(song_params[:playlist_id])
     end
   end

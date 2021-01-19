@@ -80,3 +80,13 @@ en:
       long: "%Y/%d/%m　%H:%M:%S"
   pl update success: "Playlist successfully updated"
   plEditModalTitle: 'Edit "%{pl}"'
+  errorSbE: "start cannot be after end"
+  errorEbD: "end cannot be after duration"
+  startTime: "Start Timecode"
+  stopTime: "Stop Timecode"
+  errorIdNotFound: "Couldn't find a video with this ID"
+  errorNoIdFound: "No ID found"
+  added: "Added"
+  startEnd: "Start/End"
+  before: "%{datetime} ago"
+  song update success: "Song updated"
