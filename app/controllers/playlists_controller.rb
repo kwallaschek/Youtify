@@ -47,6 +47,7 @@ class PlaylistsController < ApplicationController
   def set_pl
     @playlist = Playlist.find(params[:id])
     @playlists = current_user.playlists.all
+    Yt.configuration.api_key = "AIzaSyCJk_Y4ViQjwJhhFfW-Wyd9t2dLYqWeT-U"
     @song = Song.new
   end
 

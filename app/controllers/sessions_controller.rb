@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
       flash[:notice] = t('logged in success')
-      Yt.configuration.api_key = "AIzaSyCJk_Y4ViQjwJhhFfW-Wyd9t2dLYqWeT-U"
       redirect_to root_path
     else
       flash.now[:alert] = t('logged in error')
