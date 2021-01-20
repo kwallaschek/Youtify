@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     @user.destroy
     session[:user_id] = nil
     flash[:notice] = t('acc delete success')
-    redirect_to '/tbd'
+    redirect_to '/'
   end
 
   private

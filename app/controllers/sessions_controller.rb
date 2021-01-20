@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    redirect_to '/loggedin' if logged_in?
+    redirect_to '/' if logged_in?
   end
   def index
     redirect_to root_path
