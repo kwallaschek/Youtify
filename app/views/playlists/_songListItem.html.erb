@@ -6,7 +6,11 @@
     <%= song.name %>
   </div>
   <div class="col-3">
-    <%= Time.at(song.startSeconds).utc.strftime("%M:%S") %> - <%= Time.at(song.endSeconds).utc.strftime("%M:%S") %>
+    <% if song.songDuration >= 3600 %>
+      <%= Time.at(song.startSeconds).utc.strftime("%H:%M:%S") %> - <%= Time.at(song.endSeconds).utc.strftime("%H:%M:%S") %>
+    <% else %>
+      <%= Time.at(song.startSeconds).utc.strftime("%M:%S") %> - <%= Time.at(song.endSeconds).utc.strftime("%M:%S") %>
+    <% end %>
   </div>
   <div class="col-2">
     <%= t('before', datetime: time_ago_in_words(song.created_at)) %>
