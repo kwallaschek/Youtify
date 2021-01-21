@@ -12,8 +12,8 @@
     <%= t('before', datetime: time_ago_in_words(song.created_at)) %>
   </div>
   <div class="col-1">
-    <%= link_to icon("trash-fill",class: "deleteButtonSongListItem vertical-center"), song_path(song), class: "btn text-danger", method: :delete, data: { confirm: t('u sure Pl', pl: song.name) } %>
-    <%= link_to icon("pen-fill",class: "editButtonSongListItem vertical-center"), edit_song_path(song), class: "btn" %>
+    <%= link_to icon("trash-fill",class: "deleteButtonSongListItem vertical-center"), song_path(song), class: "btn text-danger", id: "delete_song_#{song.id}", method: :delete, data: { confirm: t('u sure Pl', pl: song.name) } %>
+    <%= link_to icon("pen-fill",class: "editButtonSongListItem vertical-center"), edit_song_path(song), class: "btn" , id: "edit_song_#{song.id}"%>
   </div>
 </div>
 

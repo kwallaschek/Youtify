@@ -5,3 +5,24 @@ FactoryBot.define do
     password { SecureRandom.hex(5) }
   end
 end
+
+def sign_up(user)
+  visit signup_path
+  fill_in "Username", with: user.username
+  fill_in "Email", with: user.email
+  fill_in "Password", with: user.password
+  click_button "Sign Up"
+end
+
+def login(user)
+  visit "/login"
+  fill_in "Email", with: user.email
+  fill_in "Password", with: user.password
+  click_button "Login"
+end
+
+def logout()
+  visit "/"
+  click_on "Logout"
+  expect(page).to have_content('Logged out')
+end

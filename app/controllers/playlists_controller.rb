@@ -38,7 +38,6 @@ class PlaylistsController < ApplicationController
   def destroy
     @playlist.destroy
     flash[:notice] = t('pl deleted')
-    flash[:notice] = current_user.playlists.all.length
     redirect_to root_path
   end
 

@@ -1,21 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SongsController, type: :controller do
-
-  def sign_up(user)
-    visit "/signup"
-    fill_in "Username", with: user.username
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Sign Up"
-  end
-
-  def login(user)
-    visit "/login"
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Login"
-  end
+RSpec.feature 'Users' do
 
   describe "#create" do
     it "is possible to sign up" do
@@ -26,12 +11,14 @@ RSpec.describe SongsController, type: :controller do
       sign_up(user)
       expect(page).to have_content('successfully signed up')
       expect(page).to have_content('Playlists')
+      logout
     end
 
     it "is possible to login" do
       login(create(:user))
       expect(page).to have_content('Logged in successfully')
       expect(page).to have_content('Playlists')
+      logout
     end
   end
 
@@ -49,6 +36,7 @@ RSpec.describe SongsController, type: :controller do
       expect(page).to have_content('Your account information was successfully updated')
       expect(User.find(user.id).username).to eq(new_name)
       expect(User.find(user.id).username).not_to eq(old_name)
+      logout
     end
   end
 

@@ -15,7 +15,6 @@ class Song < ApplicationRecord
   def startSeconds=(time)
     if time.include? ":"
       t = time.split(":")
-      p t[0].to_i*60 + t[1].to_i
       super(t[0].to_i*60 + t[1].to_i)
     end
     rescue
@@ -25,7 +24,6 @@ class Song < ApplicationRecord
   def endSeconds=(time)
     if time.include? ":"
       t = time.split(":")
-      p t[0].to_i*60 + t[1].to_i
       super(t[0].to_i*60 + t[1].to_i)
     end
     rescue
