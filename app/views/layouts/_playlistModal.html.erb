@@ -41,7 +41,11 @@
                 </div>
 
                 <div class="form-group row justify-content-center">
-                  <%= f.submit t('create'),class: "btn btn-outline-light btn-lg" %>
+                  <%= f.submit t('create'),class: "btn btn-outline-light btn-lg", onClick:"showLoader()" %>
+
+                </div>
+                <div class="dim" id="dimmer">
+                  <div class="loader" id="loader" display="none'"></div>
                 </div>
               <% end %>
             </div>
@@ -55,12 +59,22 @@
 
 <script type="text/javascript">
     function EnableDisableTextBox() {
-        var chk = document.getElementById("chkYes");
-        var chkNo = document.getElementById("chkNo");
-        var y_pl_id = document.getElementById("y_pl_id");
+        let chk = document.getElementById("chkYes");
+        let chkNo = document.getElementById("chkNo");
+        let y_pl_id = document.getElementById("y_pl_id");
         y_pl_id.disabled = chk.checked ? false : true;
         if (!y_pl_id.disabled) {
             y_pl_id.focus();
         }
     }
+</script>
+
+<script>
+    function showLoader(){
+        $('.loader').show();
+        $('.dim').show();
+    };
+    $('.loader').hide();
+    $('.dim').hide();
+
 </script>
