@@ -3,7 +3,6 @@ class PlaylistsController < ApplicationController
   before_action :require_user, except: %i[show index]
   before_action :require_same_user, only: %i[edit update destroy]
 
-
   def index
     @songs = @playlist.songs
   end
@@ -27,15 +26,41 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.new(name: playlist_params[:name])
     @playlist.user = current_user
     if !playlist_params[:y_pl_id].nil?
-      list = playlist_params[:y_pl_id][/[&?]list=([^&]+)/i]
-      extracted_list_id = list[list.index('=')+1 .. -1]
-    end
-    if @playlist.save
+      begin
+        list = playlist_params[:y_pl_id][/[&?]list=([^&]+)/i]
+        begin
+          extracted_list_id = list[list.index('=') + 1..-1]
+          pl = Yt::Playlist.new id: extracted_list_id
+        rescue
+          flash[:alert] = "Couldn't find a PlaylistID"
+          redirect_to controller: 'welcome', action: 'index'
+        end
+        @playlist.save
+        pl.playlist_items.each do |item|
+          video = Yt::Video.new id: item.video_id
+          song = Song.new
+          song.name = item.title
+          song.yid = video.id
+          song.songDuration = video.duration
+          song.startSeconds = 0
+          song.endSeconds = video.duration
+          song.playlist = @playlist
+          song.save
+        end
+      rescue
+        flash[:alert] = "failed"
+        redirect_to controller: 'welcome', action: 'index'
+      end
       flash[:notice] = t('create Pl success')
       redirect_to playlist_path(@playlist.id)
     else
-      flash[:alert] = "failed"
-      redirect_to controller: 'welcome', action: 'index'
+      if @playlist.save
+        flash[:notice] = t('create Pl success')
+        redirect_to playlist_path(@playlist.id)
+      else
+        flash[:alert] = "failed"
+        redirect_to controller: 'welcome', action: 'index'
+      end
     end
   end
 
