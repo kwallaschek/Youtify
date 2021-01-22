@@ -19,7 +19,15 @@
 <div>
   <ul class="list-group col-md-12">
     <% if @playlist.background_job_running %>
-      <div>Still importing</div>
+      <div class="row mb-2">
+        <div class="col-4"></div>
+        <div class="col-1">
+          <div class="vertical-center">Still importing</div>
+        </div>
+        <div class="col-1">
+          <div class="loader" id="loader"></div>
+        </div>
+      </div>
     <% end %>
     <% if @playlist.songs.size > 0 %>
       <% @playlist.songs.each do |sg| %>

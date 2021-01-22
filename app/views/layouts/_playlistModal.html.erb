@@ -44,9 +44,7 @@
                   <%= f.submit t('create'),class: "btn btn-outline-light btn-lg", onClick:"showLoader()" %>
 
                 </div>
-                <div class="dim" id="dimmer">
-                  <div class="loader" id="loader" display="none'"></div>
-                </div>
+
               <% end %>
             </div>
           </div>
@@ -69,12 +67,4 @@
     }
 </script>
 
-<script>
-    function showLoader(){
-        $('.loader').show();
-        $('.dim').show();
-    };
-    $('.loader').hide();
-    $('.dim').hide();
 
-</script>
