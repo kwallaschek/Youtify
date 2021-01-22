@@ -36,23 +36,14 @@ class PlaylistsController < ApplicationController
           redirect_to controller: 'welcome', action: 'index'
         end
         @playlist.save
-        pl.playlist_items.each do |item|
-          video = Yt::Video.new id: item.video_id
-          song = Song.new
-          song.name = item.title
-          song.yid = video.id
-          song.songDuration = video.duration
-          song.startSeconds = 0
-          song.endSeconds = video.duration
-          song.playlist = @playlist
-          song.save
-        end
+        PlaylistImporterJob.perform_later(extracted_list_id, @playlist)
+        flash[:notice] = t('create Pl success') + 'importing now...'
+        redirect_to playlist_path(@playlist.id)
       rescue
         flash[:alert] = "failed"
         redirect_to controller: 'welcome', action: 'index'
       end
-      flash[:notice] = t('create Pl success')
-      redirect_to playlist_path(@playlist.id)
+
     else
       if @playlist.save
         flash[:notice] = t('create Pl success')
