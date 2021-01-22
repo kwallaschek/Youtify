@@ -162,6 +162,7 @@
         <option value="rspec:view" />
         <option value="scaffold" />
         <option value="scaffold_controller" />
+        <option value="sidekiq:worker" />
         <option value="system_test" />
         <option value="task" />
         <option value="test_unit:channel" />
@@ -214,6 +215,7 @@
         <option value="rspec:view" />
         <option value="scaffold" />
         <option value="scaffold_controller" />
+        <option value="sidekiq:worker" />
         <option value="system_test" />
         <option value="task" />
         <option value="test_unit:channel" />
