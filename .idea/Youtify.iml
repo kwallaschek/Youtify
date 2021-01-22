@@ -90,7 +90,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rspec-core (v3.10.1, RVM: ruby-2.7.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-expectations (v3.10.1, RVM: ruby-2.7.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v3.10.1, RVM: ruby-2.7.2) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rspec-rails (v4.0.0.beta3, RVM: ruby-2.7.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-rails (v4.0.2, RVM: ruby-2.7.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.10.1, RVM: ruby-2.7.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby_dep (v1.5.0, RVM: ruby-2.7.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v2.3.0, RVM: ruby-2.7.2) [gem]" level="application" />
@@ -418,7 +418,7 @@
           <RakeTaskImpl id="spec">
             <subtasks>
               <RakeTaskImpl description="Run the code examples in spec/controllers" fullCommand="spec:controllers" id="controllers" />
-              <RakeTaskImpl description="Run the code examples in spec/helpers" fullCommand="spec:helpers" id="helpers" />
+              <RakeTaskImpl description="Run the code examples in spec/features" fullCommand="spec:features" id="features" />
               <RakeTaskImpl description="Run the code examples in spec/models" fullCommand="spec:models" id="models" />
               <RakeTaskImpl description="Run the code examples in spec/views" fullCommand="spec:views" id="views" />
               <RakeTaskImpl description="" fullCommand="spec:prepare" id="prepare" />

@@ -106,3 +106,4 @@ de:
       month: Monat
       year: Jahr
   song update success: "Lied wurde geupdated"
+  pl update fail: "Playlist konnte nicht geupdated werden"

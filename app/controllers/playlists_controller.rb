@@ -18,7 +18,7 @@ class PlaylistsController < ApplicationController
       flash[:notice] = t('pl update success')
       redirect_to playlist_path(@playlist)
     else
-      flash[:alert] = "failed"
+      flash[:alert] = t('pl update fail')
       redirect_to controller: 'welcome', action: 'index', id: @playlist.id
     end
   end

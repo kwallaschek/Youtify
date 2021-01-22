@@ -99,3 +99,4 @@ jp:
         one: 1年
         other: "%{count}年"
   song update success: "曲をアプデートしました"
+  pl update fail: "プレイリスト編集できませんでした"

@@ -90,3 +90,4 @@ en:
   startEnd: "Start/End"
   before: "%{datetime} ago"
   song update success: "Song updated"
+  pl update fail: "Failed to update Playlist"
