@@ -18,6 +18,9 @@
 </div>
 <div>
   <ul class="list-group col-md-12">
+    <% if @playlist.background_job_running %>
+      <div>Still importing</div>
+    <% end %>
     <% if @playlist.songs.size > 0 %>
       <% @playlist.songs.each do |sg| %>
         <li class="list-group-item" id="songId<%=sg.id %>">

@@ -23,7 +23,7 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    @playlist = Playlist.new(name: playlist_params[:name])
+    @playlist = Playlist.new(name: playlist_params[:name], background_job_running: false)
     @playlist.user = current_user
     if !playlist_params[:y_pl_id].nil?
       begin
@@ -35,6 +35,7 @@ class PlaylistsController < ApplicationController
           flash[:alert] = "Couldn't find a PlaylistID"
           redirect_to controller: 'welcome', action: 'index'
         end
+        @playlist.background_job_running = true
         @playlist.save
         PlaylistImporterJob.perform_later(extracted_list_id, @playlist)
         flash[:notice] = t('create Pl success') + 'importing now...'

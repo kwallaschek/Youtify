@@ -17,6 +17,8 @@ class PlaylistImporterJob < ApplicationJob
       song.playlist = playlist
       song.save
     end
+    playlist.background_job_running = false
+    playlist.save
     p "Done importing Playlist #{pl.id}"
   end
 
