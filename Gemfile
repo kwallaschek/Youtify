@@ -26,6 +26,7 @@ gem 'yt', '~> 0.32.5'
 gem 'jquery-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'sidekiq'
 
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
