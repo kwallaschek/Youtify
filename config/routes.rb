@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users, except: [:index]
   resources :playlists do
     post 'changeSong', to: 'application#changeSong'
+    post 'updateImportNumber', to: 'playlists#updateImportNumber'
 
   end
   resources :songs

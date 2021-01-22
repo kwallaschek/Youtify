@@ -1,0 +1,5 @@
+<div class="vertical-center">Still importing <%= @playlist.songs.size %>/<%= Playlist.find(@playlist.id).ytPlSize %></div>
+
+<script>
+  document.getElementById("stillImporting?").innerHTML = <%= @playlist.background_job_running %>;
+</script>

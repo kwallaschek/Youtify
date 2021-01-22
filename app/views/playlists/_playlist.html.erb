@@ -1,0 +1,9 @@
+<% if @playlist.songs.size > 0 %>
+  <% @playlist.songs.each do |sg| %>
+    <li class="list-group-item" id="songId<%=sg.id %>">
+      <%= render partial: "songListItem", locals: { song: sg} %>
+    </li>
+  <% end %>
+<% else %>
+  <div>　<%= t('noSongs') %>　</div>
+<% end %>

@@ -16,6 +16,9 @@ class PlaylistImporterJob < ApplicationJob
       song.endSeconds = video.duration
       song.playlist = playlist
       song.save
+      if playlist.songs.size == playlist.ytPlSize
+        break
+      end
     end
     playlist.background_job_running = false
     playlist.save

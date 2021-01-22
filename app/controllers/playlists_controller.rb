@@ -22,6 +22,18 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def updateImportNumber
+    p "called Update Import Number"
+    @playlist = Playlist.find(params[:playlist_id])
+    respond_to do |format|
+
+      format.js { render "updateImportNumber", layout: false}
+      format.js { render "playlist", layout: false}
+      format.json {render json: {stillImporting: @playlist.background_job_running}}
+    end
+
+  end
+
   def create
     @playlist = Playlist.new(name: playlist_params[:name], background_job_running: false)
     @playlist.user = current_user
@@ -36,9 +48,10 @@ class PlaylistsController < ApplicationController
           redirect_to controller: 'welcome', action: 'index'
         end
         @playlist.background_job_running = true
+        @playlist.ytPlSize = pl.playlist_items.size
         @playlist.save
         PlaylistImporterJob.perform_later(extracted_list_id, @playlist)
-        flash[:notice] = t('create Pl success') + 'importing now...'
+        flash[:notice] = t('create Pl success') + ' importing now...'
         redirect_to playlist_path(@playlist.id)
       rescue
         flash[:alert] = "failed"
