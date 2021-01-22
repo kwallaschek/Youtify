@@ -3,7 +3,6 @@ class PlaylistsController < ApplicationController
   before_action :require_user, except: %i[show index]
   before_action :require_same_user, only: %i[edit update destroy]
 
-
   def index
     @songs = @playlist.songs
   end
@@ -23,15 +22,50 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def updateImportNumber
+    p "called Update Import Number"
+    @playlist = Playlist.find(params[:playlist_id])
+    respond_to do |format|
+
+      format.js { render "updateImportNumber", layout: false}
+      format.js { render "playlist", layout: false}
+      format.json {render json: {stillImporting: @playlist.background_job_running}}
+    end
+
+  end
+
   def create
-    @playlist = Playlist.new(playlist_params)
+    @playlist = Playlist.new(name: playlist_params[:name], background_job_running: false)
     @playlist.user = current_user
-    if @playlist.save
-      flash[:notice] = t('create Pl success')
-      redirect_to playlist_path(@playlist.id)
+    if !playlist_params[:y_pl_id].nil?
+      begin
+        list = playlist_params[:y_pl_id][/[&?]list=([^&]+)/i]
+        begin
+          extracted_list_id = list[list.index('=') + 1..-1]
+          pl = Yt::Playlist.new id: extracted_list_id
+        rescue
+          flash[:alert] = "Couldn't find a PlaylistID"
+          redirect_to controller: 'welcome', action: 'index'
+        end
+        @playlist.background_job_running = true
+        @playlist.ytPlSize = pl.playlist_items.size
+        @playlist.save
+        PlaylistImporterJob.perform_later(extracted_list_id, @playlist)
+        flash[:notice] = t('create Pl success') + ' importing now...'
+        redirect_to playlist_path(@playlist.id)
+      rescue
+        flash[:alert] = "failed"
+        redirect_to controller: 'welcome', action: 'index'
+      end
+
     else
-      flash[:alert] = "failed"
-      redirect_to controller: 'welcome', action: 'index'
+      if @playlist.save
+        flash[:notice] = t('create Pl success')
+        redirect_to playlist_path(@playlist.id)
+      else
+        flash[:alert] = "failed"
+        redirect_to controller: 'welcome', action: 'index'
+      end
     end
   end
 
@@ -55,6 +89,6 @@ class PlaylistsController < ApplicationController
   end
 
   def playlist_params
-    params.require(:playlist).permit(:name)
+    params.require(:playlist).permit(:name, :y_pl_id)
   end
 end

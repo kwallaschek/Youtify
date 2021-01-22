@@ -16,25 +16,55 @@
               <%#= render 'shared/errors', obj: @playlist %>
               <%= form_with(model: Playlist.new, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
                 <div class="form-group row">
-                  <%= f.label :name,t('name'), class: "col-2 col-form-label text-light" %>
-                  <div class="col-10">
+                  <%= f.label :name,t('name'), class: "col-3 col-form-label text-light" %>
+                  <div class="col-9">
                     <%= f.text_field :name, class: "form-control shadow rounded", placeholder: t('name Pl') %>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <%= f.label "Import from YouTube Playlist?", class: "col-5 col-form-label text-light" %>
+
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="option" id="chkYes" autocomplete="off" onClick=EnableDisableTextBox()> Yes
+                  </label>
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="option" id="chkNo" autocomplete="off" onClick=EnableDisableTextBox() checked> No
+                  </label>
+                </div>
+                </div>
+                <div class="form-group row">
+                  <%= f.label :y_pl_id, "YoutubePlList", class: "col-3 col-form-label text-light" %>
+                  <div class="col-9">
+                    <%= f.text_field :y_pl_id, class: "form-control shadow rounded", placeholder: "Link to Playlist", disabled:'disabled', id:"y_pl_id"%>
                   </div>
                 </div>
 
                 <div class="form-group row justify-content-center">
-                  <%= f.submit t('create'),class: "btn btn-outline-light btn-lg" %>
+                  <%= f.submit t('create'),class: "btn btn-outline-light btn-lg", onClick:"showLoader()" %>
+
                 </div>
+
               <% end %>
             </div>
           </div>
         </div>
 
       </div>
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
-<!--      </div>-->
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+    function EnableDisableTextBox() {
+        let chk = document.getElementById("chkYes");
+        let chkNo = document.getElementById("chkNo");
+        let y_pl_id = document.getElementById("y_pl_id");
+        y_pl_id.disabled = chk.checked ? false : true;
+        if (!y_pl_id.disabled) {
+            y_pl_id.focus();
+        }
+    }
+</script>
+
+

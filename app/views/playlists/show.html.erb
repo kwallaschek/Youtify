@@ -18,16 +18,46 @@
 </div>
 <div>
   <ul class="list-group col-md-12">
-    <% if @playlist.songs.size > 0 %>
-      <% @playlist.songs.each do |sg| %>
-        <li class="list-group-item" id="songId<%=sg.id %>">
-          <%= render partial: "songListItem", locals: { song: sg} %>
-        </li>
-      <% end %>
-    <% else %>
-      <div>　<%= t('noSongs') %>　</div>
+    <% if @playlist.background_job_running %>
+      <div class="row mb-2">
+        <div class="col-4"></div>
+          <div class="col-1" id="importField">
+            <%= render 'updateImportNumber' %>
+          </div>
+          <div class="col-1">
+            <div class="loader" id="loader"></div>
+          </div>
+      </div>
     <% end %>
+    <div id="playlistList">
+      <%= render 'playlist' %>
+    </div>
+
   </ul>
-
+  <div id="stillImporting?" hidden="true"><%=@playlist.background_job_running %></div>
 </div>
+<script>
+    function updateLoader() {
+        console.log("try to update");
+        $.ajax({
+            type: 'POST',
+            url: '<%=playlist_updateImportNumber_path(:playlist_id => @playlist.id) %>',
+            success: function (data){
+                console.log(document.getElementById('stillImporting?').innerText);
+                if (document.getElementById('stillImporting?').innerText == 'true'){
+                    setTimeout('updateLoader();',1000);
+                }else{
+                    document.getElementById("loader").style.display = 'none';
+                    document.getElementById("importField").style.display = 'none';
+                }
 
+            },
+        });
+    }
+    <% if @playlist.background_job_running %>
+      updateLoader();
+    <% else %>
+      document.getElementById("loader").style.display = 'none';
+      document.getElementById("importField").style.display = 'none';
+    <% end %>
+</script>
