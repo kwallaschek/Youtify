@@ -32,8 +32,14 @@
     var progress = document.getElementById('progress');
     // Update Progress Bar & Time
     function updateProgressBar(duration, currentTime) {
-            const currentTimeEl = document.getElementById('current-time');
-            const durationEl = document.getElementById('duration');
+        console.log("Updating: <%= @current_song.name %>");
+        const currentTimeEl = document.getElementById('current-time');
+        const durationEl = document.getElementById('duration');
+        if (currentTimeEl === null || durationEl === null){
+            clearTimeout(mytimer);
+            clearInterval(mytimer);
+            return;
+        };
             // Update progress bar width
             const progressPercent = (currentTime / duration) * 100;
             progress.style.width = `${progressPercent}%`;
@@ -70,6 +76,16 @@
             events:{onReady:function(e){r.setPlaybackQuality("small")},
 
                 onStateChange:function(e){
+                    if (r.getPlayerState()===YT.PlayerState.PLAYING){
+                        mytimer = setInterval(function() {
+                            var playerCurrentTime = r.getCurrentTime();
+                            updateProgressBar(<%= @current_song.endSeconds %>,playerCurrentTime);
+                        }, 200);
+                    } else {
+                        clearTimeout(mytimer);
+                        clearInterval(mytimer);
+                        // progress.remove();
+                    };
                 r.getPlayerState()===YT.PlayerState.PLAYING ||r.getPlayerState()===YT.PlayerState.BUFFERING?
                     (document.getElementById("playButtonToggle").style.display="none", document.getElementById("pauseButtonToggle").style.display="block")
                     :(document.getElementById("playButtonToggle").style.display="block", document.getElementById("pauseButtonToggle").style.display="none");
@@ -83,15 +99,7 @@
                                                                                                                                                         /*position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; min-width: 50%;min-height: 50%;filter: blur(15px);-webkit-filter: blur(50px);transform: scale(1.1); }.player-container {  height: 500px;dth: 400px;background: #e7e7e7;border-radius: 20px;box-shadow: 0 15px 30px 5px rgba(0, 0, 0, 0.3);}*/
 
 
-                    if (r.getPlayerState()==YT.PlayerState.PLAYING){
-                        mytimer = setInterval(function() {
-                            var playerCurrentTime = r.getCurrentTime();
-                            updateProgressBar(<%= @current_song.endSeconds %>,playerCurrentTime);
-                        }, 200);
-                    } else {
-                        clearTimeout(mytimer);
-                        progress.remove();
-                    }
+
 
                 }}})
         var playButton = document.getElementById("playButton")
@@ -135,7 +143,6 @@
 
     }
     $(document).ready(onYouTubeIframeAPIReady())
-
 </script>
 
 <% end %>
