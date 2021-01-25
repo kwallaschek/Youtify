@@ -1,23 +1,27 @@
-<div id="sticky-footer" class="py-3 bg-dark text-white fixed-bottom">
-
+<div id="sticky-footer" class="py-1 bg-dark text-white fixed-bottom">
+  <div class="row justify-content-center" id="current_song_name"></div>
   <div class="row justify-content-center">
-    <div id="prevButton" class='controlButton'> <%= icon('skip-backward', class: 'controlButton') %></div>
-    <div id="playButton" class='controlButton'>
-      <div id="playButtonToggle">
-        <%= icon('play-circle', class: 'controlButton') %>
+
+    <div id="music-controls" class="col-2 row">
+      <div id="prevButton" class='controlButton'> <%= icon('skip-backward', class: 'controlButton') %></div>
+      <div id="playButton" class='controlButton'>
+        <div id="playButtonToggle">
+          <%= icon('play-circle', class: 'controlButton') %>
+        </div>
+        <div id="pauseButtonToggle">
+          <%= icon('pause-circle', class: 'controlButton') %>
+        </div>
       </div>
-      <div id="pauseButtonToggle">
-        <%= icon('pause-circle', class: 'controlButton') %>
-      </div>
+      <div id="nextButton" class='controlButton'> <%= icon('skip-forward', class: 'controlButton') %></div>
     </div>
-    <div id="nextButton" class='controlButton'> <%= icon('skip-forward', class: 'controlButton') %></div>
+
+    <div id="player" class="player col-9">
+      <%#= render :template => "playground/index" %>
+      <%= render 'layouts/youtubePlayer' %>
+    </div>
+
   </div>
 
-
-
 </div>
-<div id="player" class="player">
-  <%#= render :template => "playground/index" %>
-  <%= render 'layouts/youtubePlayer' %>
-</div>
+
 
