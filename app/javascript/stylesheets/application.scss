@@ -101,3 +101,8 @@
   -moz-opacity: 0.75;      /* mozilla, netscape */
   opacity: 0.75;      /* fx, safari, opera */
 }
+
+.ytplayer {
+  position: relative;
+  left: 50%;
+}
