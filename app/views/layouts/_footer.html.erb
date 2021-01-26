@@ -19,6 +19,14 @@
       <%#= render :template => "playground/index" %>
       <%= render 'layouts/youtubePlayer' %>
     </div>
+    <div id="soundButton">
+      <div id="soundButtonToggle" style="display: none">
+        <%= icon('volume-mute-fill', class:'controlButton') %>
+      </div>
+      <div id="muteButtonToggle" style="display: none">
+        <%= icon('volume-up-fill', class:'controlButton') %>
+      </div>
+    </div>
 
   </div>
 

@@ -28,5 +28,30 @@
       <%= render 'layouts/messages' %>
       <%= yield %>
     <% end %>
+    <div id="muted?" hidden="true">1</div>
   </body>
 </html>
+
+<script>
+    var soundButton = document.getElementById("soundButton")
+    function mute(){
+        if (document.getElementById('muted?').innerText === '0'){
+            document.getElementById('muted?').innerText = '1';
+            document.getElementById("soundButtonToggle").style.display="none", document.getElementById("muteButtonToggle").style.display="block";
+        } else {
+            document.getElementById('muted?').innerText = '0';
+            document.getElementById("soundButtonToggle").style.display="block", document.getElementById("muteButtonToggle").style.display="none";
+        }
+    }
+    function initSound(){
+        if (document.getElementById('muted?').innerText === '0'){
+            document.getElementById("soundButtonToggle").style.display="block", document.getElementById("muteButtonToggle").style.display="none";
+        } else {
+            document.getElementById("soundButtonToggle").style.display="none", document.getElementById("muteButtonToggle").style.display="block";
+        }
+    }
+    soundButton.addEventListener('click', function () {
+        mute();
+    })
+    $(document).ready(initSound());
+</script>

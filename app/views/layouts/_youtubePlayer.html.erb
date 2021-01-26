@@ -20,7 +20,7 @@
     </div>
   </div><!--                                                                                                                                    /*position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; min-width: 50%;min-height: 50%;filter: blur(15px);-webkit-filter: blur(50px);transform: scale(1.1); }.player-container {  height: 500px;dth: 400px;background: #e7e7e7;border-radius: 20px;box-shadow: 0 15px 30px 5px rgba(0, 0, 0, 0.3);}*/-->
 
-  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="https://www.youtube.com/iframe_api" allow="autoplay"></script>
 <script >
     /*
  YouTube Audio Embed
@@ -71,10 +71,15 @@
         var a=document.createElement("div");
         a.setAttribute("id","youtube-player"),e.appendChild(a);
         e.onclick=function(){r.getPlayerState()===YT.PlayerState.PLAYING||r.getPlayerState()===YT.PlayerState.BUFFERING?(r.pauseVideo()):(r.playVideo())};
-        var r=new YT.Player("youtube-player",{height:"0",width:"0",videoId:e.dataset.video,playerVars:{autoplay:e.dataset.autoplay,loop:e.dataset.loop, start:<%= current_song.startSeconds%>,end:<%= current_song.endSeconds%>},
-            events:{onReady:function(e){r.setPlaybackQuality("small")},
+        var r=new YT.Player("youtube-player",{height:"0",width:"0",videoId:e.dataset.video,playerVars:{autoplay:e.dataset.autoplay,loop:e.dataset.loop, start:<%= current_song.startSeconds%>,end:<%= current_song.endSeconds%>, mute: 0},
+            events:{onReady:function(e){r.setPlaybackQuality("small");
+                    var isCurrentlyMuted = document.getElementById("muted?").innerHTML;
+                    if (isCurrentlyMuted === "0"){
+                        r.mute();
+                    }},
 
                 onStateChange:function(e){
+
                     if (r.getPlayerState()===YT.PlayerState.PLAYING){
                         mytimer = setInterval(function() {
                             var playerCurrentTime = r.getCurrentTime();
@@ -104,6 +109,7 @@
         var playButton = document.getElementById("playButton")
         var prev = document.getElementById("prevButton")
         var next = document.getElementById("nextButton")
+
         playButton.onclick=function(){
             r.getPlayerState()===YT.PlayerState.PLAYING
             ||r.getPlayerState()===YT.PlayerState.BUFFERING?
@@ -124,6 +130,7 @@
             });
             return false;
         };
+
         var progressContainer = document.getElementById('progress-container');
         // Set Progress Bar
         function setProgressBar(e) {
@@ -134,6 +141,17 @@
             r.seekTo((clickX / width) * duration, true);
         }
         progressContainer.addEventListener('click', setProgressBar);
+
+        var soundButton = document.getElementById("soundButton");
+        soundButton.addEventListener('click',function(){
+            if (document.getElementById('muted?').innerText === '0'){
+                r.mute();
+            } else {
+                r.unMute();
+            }
+        });
+
+
 
         var songNameFrame = document.getElementById('current_song_name');
         songNameFrame.textContent = "<%= @current_song.name %>";
