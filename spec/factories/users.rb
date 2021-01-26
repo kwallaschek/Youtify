@@ -4,6 +4,7 @@
 #
 #  id              :integer          not null, primary key
 #  email           :string
+#  low_performance :boolean
 #  password_digest :string
 #  username        :string
 #  created_at      :datetime         not null
