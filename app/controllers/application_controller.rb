@@ -22,11 +22,9 @@ class ApplicationController < ActionController::Base
   def nextSong
     if params[:next] == "next"
       nextSong = Song.where('playlist_id = ? AND id > ?', params[:playlist_id], params[:id])
-      p nextSong
       @current_song = nextSong.first
     elsif params[:next] == "prev"
       nextSong = Song.where('playlist_id = ? AND id < ?', params[:playlist_id], params[:id])
-      p nextSong
       @current_song = nextSong.last
     end
 

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :playlists do
     post 'changeSong', to: 'application#changeSong'
     post 'updateImportNumber', to: 'playlists#updateImportNumber'
+    get 'deleteSongFromPlaylist', to: 'playlists#deleteSongFromPlaylist'
 
   end
   resources :songs

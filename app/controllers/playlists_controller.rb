@@ -22,8 +22,16 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def deleteSongFromPlaylist
+    song = Song.find(params[:song])
+    song.destroy
+    @playlist = Playlist.find(params[:playlist_id])
+    respond_to do |format|
+      format.js { render "playlist", layout: false}
+    end
+  end
+
   def updateImportNumber
-    p "called Update Import Number"
     @playlist = Playlist.find(params[:playlist_id])
     respond_to do |format|
 
