@@ -55,14 +55,19 @@ class PlaylistsController < ApplicationController
           flash[:alert] = "Couldn't find a PlaylistID"
           redirect_to controller: 'welcome', action: 'index'
         end
-        @playlist.background_job_running = true
-        @playlist.ytPlSize = pl.playlist_items.size
-        @playlist.save
-        PlaylistImporterJob.perform_later(extracted_list_id, @playlist)
-        flash[:notice] = t('create Pl success') + ' importing now...'
-        redirect_to playlist_path(@playlist.id)
+        if @playlist.save
+          @playlist.background_job_running = true
+          @playlist.ytPlSize = pl.playlist_items.size
+          @playlist.save
+          PlaylistImporterJob.perform_later(extracted_list_id, @playlist)
+          flash[:notice] = t('create Pl success') + ' importing now...'
+          redirect_to playlist_path(@playlist.id)
+        else
+          flash[:alert] = t('failed')
+          redirect_to controller: 'welcome', action: 'index'
+        end
       rescue
-        flash[:alert] = "failed"
+        flash[:alert] = t('failed')
         redirect_to controller: 'welcome', action: 'index'
       end
 
@@ -71,7 +76,7 @@ class PlaylistsController < ApplicationController
         flash[:notice] = t('create Pl success')
         redirect_to playlist_path(@playlist.id)
       else
-        flash[:alert] = "failed"
+        flash[:alert] = t('failed')
         redirect_to controller: 'welcome', action: 'index'
       end
     end
