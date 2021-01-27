@@ -27,9 +27,11 @@
         <%= icon('volume-up-fill', class:'controlButton') %>
       </div>
     </div>
-    <div id="playModes">
-      <%= render 'layouts/playmodes' %>
-    </div>
+    <% if controller_name == "playlists" %>
+      <div id="playModes">
+        <%= render 'layouts/playmodes' %>
+      </div>
+    <% end %>
 
   </div>
 

@@ -20,15 +20,19 @@ class ApplicationController < ActionController::Base
   end
 
   def nextSong
+    playlist = Playlist.find(params[:playlist_id])
     if params[:next] == "next"
-      nextSong = Song.where('playlist_id = ? AND id > ?', params[:playlist_id], params[:id])
-      @current_song = nextSong.first
+      if playlist.shuffle
+        @current_song = Song.where('playlist_id = ?', playlist.id).sample
+      else
+        @current_song = Song.where('playlist_id = ? AND id > ?', params[:playlist_id], params[:id]).first
+        if @current_song.nil? && playlist.repeat
+          @current_song = playlist.songs.first
+        end
+      end
     elsif params[:next] == "prev"
-      nextSong = Song.where('playlist_id = ? AND id < ?', params[:playlist_id], params[:id])
-      @current_song = nextSong.last
+      @current_song = Song.where('playlist_id = ? AND id < ?', params[:playlist_id], params[:id]).last
     end
-
-
     respond_to do |format|
       #format.html{render'layouts/changeSong'}
       format.js{render 'layouts/changeSong', layout: false}

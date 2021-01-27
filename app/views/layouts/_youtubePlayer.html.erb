@@ -62,8 +62,8 @@
     }
     function onYouTubeIframeAPIReady(){
         $('.active').removeClass('active');
-        document.getElementById("songId<%=current_song.id %>").classList.toggle('active');
-
+        var songitem = document.getElementById("songId<%=current_song.id %>");
+        songitem.classList.toggle('active');
 
 
         var e=document.getElementById("youtube-audio"),t=document.createElement("img");
