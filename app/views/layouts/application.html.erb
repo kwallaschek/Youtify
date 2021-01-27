@@ -28,7 +28,7 @@
       <%= render 'layouts/messages' %>
       <%= yield %>
     <% end %>
-    <div id="muted?" hidden="true">1</div>
+    <div id="muted?" hidden="true">0</div>
   </body>
 </html>
 
@@ -37,14 +37,15 @@
     function mute(){
         if (document.getElementById('muted?').innerText === '0'){
             document.getElementById('muted?').innerText = '1';
-            document.getElementById("soundButtonToggle").style.display="none", document.getElementById("muteButtonToggle").style.display="block";
+            document.getElementById("soundButtonToggle").style.display="block", document.getElementById("muteButtonToggle").style.display="none";
         } else {
             document.getElementById('muted?').innerText = '0';
-            document.getElementById("soundButtonToggle").style.display="block", document.getElementById("muteButtonToggle").style.display="none";
+            document.getElementById("soundButtonToggle").style.display="none", document.getElementById("muteButtonToggle").style.display="block";
+
         }
     }
     function initSound(){
-        if (document.getElementById('muted?').innerText === '0'){
+        if (document.getElementById('muted?').innerText === '1'){
             document.getElementById("soundButtonToggle").style.display="block", document.getElementById("muteButtonToggle").style.display="none";
         } else {
             document.getElementById("soundButtonToggle").style.display="none", document.getElementById("muteButtonToggle").style.display="block";

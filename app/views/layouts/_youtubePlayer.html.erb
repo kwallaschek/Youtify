@@ -73,13 +73,10 @@
         e.onclick=function(){r.getPlayerState()===YT.PlayerState.PLAYING||r.getPlayerState()===YT.PlayerState.BUFFERING?(r.pauseVideo()):(r.playVideo())};
         var r=new YT.Player("youtube-player",{height:"0",width:"0",videoId:e.dataset.video,playerVars:{autoplay:e.dataset.autoplay,loop:e.dataset.loop, start:<%= current_song.startSeconds%>,end:<%= current_song.endSeconds%>, mute: 0},
             events:{onReady:function(e){r.setPlaybackQuality("small");
-                    var isCurrentlyMuted = document.getElementById("muted?").innerHTML;
-                    if (isCurrentlyMuted === "0"){
-                        r.mute();
-                    }},
+                    },
 
                 onStateChange:function(e){
-
+                    mutePlayer();
                     <% if !current_user.low_performance %>
                       if (r.getPlayerState()===YT.PlayerState.PLAYING){
                         mytimer = setInterval(function() {
@@ -148,12 +145,16 @@
 
         var soundButton = document.getElementById("soundButton");
         soundButton.addEventListener('click',function(){
-            if (document.getElementById('muted?').innerText === '0'){
+            mutePlayer();
+        });
+
+        function mutePlayer(){
+            if (document.getElementById('muted?').innerText === '1'){
                 r.mute();
             } else {
                 r.unMute();
             }
-        });
+        }
 
 
 
