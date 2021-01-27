@@ -100,3 +100,7 @@ jp:
         other: "%{count}年"
   song update success: "曲をアプデートしました"
   pl update fail: "プレイリスト編集できませんでした"
+  EnabledLP: "低いパフォーマンスモードオンしました"
+  DisabledLP: "低いパフォーマンスモードオフしました"
+  setPm: "低いパフォーマンスモードオン"
+  disablePm: "低いパフォーマンスモードオフ"

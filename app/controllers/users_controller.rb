@@ -20,6 +20,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def setPerformanceMode
+    @user = User.find(params[:user_id])
+    @user.low_performance = (@user.low_performance)? false : true
+    @user.save
+    if @user.low_performance
+      flash[:notice] = t('EnabledLP')
+    else
+      flash[:notice] = t('DisabledLP')
+    end
+    redirect_to @user
+  end
   def create
     @user = User.new(user_params)
     @user.low_performance = false

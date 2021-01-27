@@ -107,3 +107,7 @@ de:
       year: Jahr
   song update success: "Lied wurde geupdated"
   pl update fail: "Playlist konnte nicht geupdated werden"
+  EnabledLP: "Low Performance Mode Aktiviert"
+  DisabledLP: "Low Performance Mode Deaktiviert"
+  setPm: "Low Performance Mode aktivieren"
+  disablePm: "Low Performance Mode deaktivieren"
