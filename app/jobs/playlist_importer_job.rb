@@ -1,6 +1,5 @@
 class PlaylistImporterJob < ApplicationJob
   queue_as :default
-  before_enqueue :print_before_enqueue_message
   def perform(pl_id, playlist)
     Yt.configuration.api_key = "AIzaSyCJk_Y4ViQjwJhhFfW-Wyd9t2dLYqWeT-U"
     pl = Yt::Playlist.new id: pl_id
