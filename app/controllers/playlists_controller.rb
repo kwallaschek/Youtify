@@ -42,9 +42,21 @@ class PlaylistsController < ApplicationController
 
   end
 
+  def changePlayMode
+    @playlist = Playlist.find(params[:playlist_id])
+    @playlist.shuffle = params[:shuffle] unless params[:shuffle].nil?
+    @playlist.repeat = params[:repeat] unless params[:repeat].nil?
+    @playlist.save
+    p @playlist
+    respond_to do |format|
+      format.js { render "changePlayMode", layout: false}
+    end
+  end
   def create
     @playlist = Playlist.new(name: playlist_params[:name], background_job_running: false)
     @playlist.user = current_user
+    @playlist.shuffle = false
+    @playlist.repeat = false
     if !playlist_params[:y_pl_id].nil?
       begin
         list = playlist_params[:y_pl_id][/[&?]list=([^&]+)/i]

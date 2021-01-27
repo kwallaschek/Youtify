@@ -6,6 +6,8 @@
 #  background_job_running :boolean
 #  description            :text
 #  name                   :string
+#  repeat                 :boolean
+#  shuffle                :boolean
 #  ytPlSize               :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null

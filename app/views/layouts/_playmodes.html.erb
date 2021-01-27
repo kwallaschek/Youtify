@@ -1,0 +1,14 @@
+<div class="col-1">
+  <% if @playlist.repeat %>
+    <%= link_to icon("arrow-repeat",class: "vertical-center rsT"), playlist_changePM_path(playlist_id: @playlist.id, repeat: false), remote: true, class: "btn "%>
+  <% else %>
+    <%= link_to icon("arrow-repeat",class: "vertical-center rsF"), playlist_changePM_path(playlist_id: @playlist.id, repeat: true), remote: true, class: "btn rsF"%>
+  <% end %>
+</div>
+<div class="col-1">
+  <% if @playlist.shuffle %>
+    <%= link_to icon("shuffle",class: "vertical-center rsT"), playlist_changePM_path(playlist_id: @playlist.id, shuffle: false), remote: true, class: "btn rsT"%>
+  <% else %>
+    <%= link_to icon("shuffle",class: "vertical-center rsF"), playlist_changePM_path(playlist_id: @playlist.id, shuffle: true), remote: true, class: "btn rsF"%>
+  <% end %>
+</div>

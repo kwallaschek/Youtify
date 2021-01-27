@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     post 'changeSong', to: 'application#changeSong'
     post 'updateImportNumber', to: 'playlists#updateImportNumber'
     get 'deleteSongFromPlaylist', to: 'playlists#deleteSongFromPlaylist'
-
+    get 'changePM', to: 'playlists#changePlayMode'
   end
   resources :songs
   get 'login', to: 'sessions#new'
