@@ -113,3 +113,8 @@ de:
   YoutubePlList: "YouTube Playlist"
   ImportYtPl: "Playlist aus YouTube importieren?"
   failed: "Etwas ist schiefgelaufen"
+  EnabledLP: "Low Performance Mode Aktiviert"
+  DisabledLP: "Low Performance Mode Deaktiviert"
+  setPm: "Low Performance Mode aktivieren"
+  disablePm: "Low Performance Mode deaktivieren"
+

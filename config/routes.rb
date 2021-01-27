@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'signup', to: 'users#new'
   get 'users', to: 'users#new'
-  resources :users, except: [:index]
+  resources :users, except: [:index] do
+    post 'setPerformance', to: 'users#setPerformanceMode'
+  end
   resources :playlists do
     post 'changeSong', to: 'application#changeSong'
     post 'updateImportNumber', to: 'playlists#updateImportNumber'

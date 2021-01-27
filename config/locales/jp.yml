@@ -106,3 +106,7 @@ jp:
   YoutubePlList: "YouTubeプレイリスト"
   ImportYtPl: "プレイリストをYouTubeからimportする？"
   failed: "いけないことがありました"
+  EnabledLP: "低いパフォーマンスモードオンしました"
+  DisabledLP: "低いパフォーマンスモードオフしました"
+  setPm: "低いパフォーマンスモードオン"
+  disablePm: "低いパフォーマンスモードオフ"
