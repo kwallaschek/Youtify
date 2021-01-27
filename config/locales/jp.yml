@@ -100,3 +100,8 @@ jp:
         other: "%{count}年"
   song update success: "曲をアプデートしました"
   pl update fail: "プレイリスト編集できませんでした"
+  yess: "はい"
+  noo: "いいえ"
+  Link to Playlist: "プレイリストリンク　(...list=?...)"
+  YoutubePlList: "YouTubeプレイリスト"
+  ImportYtPl: "プレイリストをYouTubeからimportする？"

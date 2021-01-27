@@ -91,3 +91,8 @@ en:
   before: "%{datetime} ago"
   song update success: "Song updated"
   pl update fail: "Failed to update Playlist"
+  yess: "Yes"
+  noo: "No"
+  Link to Playlist: "Link to Playlist (...list=?...)"
+  YoutubePlList: "YouTube Playlist"
+  ImportYtPl: "Import Playlist from YouTube?"

@@ -22,26 +22,26 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <%= f.label "Import from YouTube Playlist?", class: "col-5 col-form-label text-light" %>
+                  <%= f.label t('ImportYtPl'), class: "col-5 col-form-label text-light" %>
 
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                   <label class="btn btn-secondary">
-                    <input type="radio" name="option" id="chkYes" autocomplete="off" onClick=EnableDisableTextBox()> Yes
+                    <input type="radio" name="option" id="chkYes" autocomplete="off" onClick=EnableDisableTextBox()> <%= t('yess') %>
                   </label>
                   <label class="btn btn-secondary">
-                    <input type="radio" name="option" id="chkNo" autocomplete="off" onClick=EnableDisableTextBox() checked> No
+                    <input type="radio" name="option" id="chkNo" autocomplete="off" onClick=EnableDisableTextBox() checked><%= t('noo') %>
                   </label>
                 </div>
                 </div>
                 <div class="form-group row">
-                  <%= f.label :y_pl_id, "YoutubePlList", class: "col-3 col-form-label text-light" %>
+                  <%= f.label :y_pl_id, t('YoutubePlList'), class: "col-3 col-form-label text-light" %>
                   <div class="col-9">
-                    <%= f.text_field :y_pl_id, class: "form-control shadow rounded", placeholder: "Link to Playlist", disabled:'disabled', id:"y_pl_id"%>
+                    <%= f.text_field :y_pl_id, class: "form-control shadow rounded", placeholder: t('Link to Playlist'), disabled:'disabled', id:"y_pl_id"%>
                   </div>
                 </div>
 
                 <div class="form-group row justify-content-center">
-                  <%= f.submit t('create'),class: "btn btn-outline-light btn-lg", onClick:"showLoader()" %>
+                  <%= f.submit t('create'),class: "btn btn-outline-light btn-lg" %>
 
                 </div>
 

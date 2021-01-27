@@ -107,3 +107,8 @@ de:
       year: Jahr
   song update success: "Lied wurde geupdated"
   pl update fail: "Playlist konnte nicht geupdated werden"
+  yess: "Ja"
+  noo: "Nein"
+  Link to Playlist: "Link zur Playlist (...list=?...)"
+  YoutubePlList: "YouTube Playlist"
+  ImportYtPl: "Playlist aus YouTube importieren?"
