@@ -80,16 +80,20 @@
 
                 onStateChange:function(e){
 
-                    if (r.getPlayerState()===YT.PlayerState.PLAYING){
+                    <% if !current_user.low_performance %>
+                      if (r.getPlayerState()===YT.PlayerState.PLAYING){
                         mytimer = setInterval(function() {
                             var playerCurrentTime = r.getCurrentTime();
                             updateProgressBar(<%= @current_song.endSeconds %>,playerCurrentTime);
                         }, 200);
-                    } else {
+                      } else {
                         clearTimeout(mytimer);
                         clearInterval(mytimer);
                         // progress.remove();
-                    };
+                      };
+                    <% else %>
+                      progress.remove();
+                    <% end  %>
                 r.getPlayerState()===YT.PlayerState.PLAYING ||r.getPlayerState()===YT.PlayerState.BUFFERING?
                     (document.getElementById("playButtonToggle").style.display="none", document.getElementById("pauseButtonToggle").style.display="block")
                     :(document.getElementById("playButtonToggle").style.display="block", document.getElementById("pauseButtonToggle").style.display="none");
