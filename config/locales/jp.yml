@@ -111,3 +111,4 @@ jp:
   setPm: "低いパフォーマンスモードオン"
   disablePm: "低いパフォーマンスモードオフ"
   importing now: "インポート中..."
+  Still importing: "インポート中 "
