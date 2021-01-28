@@ -72,7 +72,7 @@ class PlaylistsController < ApplicationController
           @playlist.ytPlSize = pl.playlist_items.size
           @playlist.save
           PlaylistImporterJob.perform_later(extracted_list_id, @playlist)
-          flash[:notice] = t('create Pl success') + ' importing now...'
+          flash[:notice] = t('create Pl success') + ", " + t('importing now')
           redirect_to playlist_path(@playlist.id)
         else
           flash[:alert] = t('failed')
